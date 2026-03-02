@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FORTIS SEC — Audits & Infrastructure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #080c10;
+      --bg2: #0d1117;
+      --grid: rgba(0,255,140,0.04);
+      --accent: #00ff8c;
+      --accent2: #00cfff;
+      --accent3: #ff3c6e;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --border: rgba(0,255,140,0.15);
+      --card: rgba(13,17,23,0.8);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* GRID BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NOISE TEXTURE */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* TYPOGRAPHY */
+    .mono { font-family: 'Share Tech Mono', monospace; }
+    .syne { font-family: 'Syne', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .logo span { color: var(--accent); }
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    nav a {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,255,140,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,207,255,0.06) 0%, transparent 70%);
+      top: 20%; right: 10%;
+      pointer-events: none;
+    }
+    .hero-content { max-width: 800px; }
+    .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,255,140,0.5);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      padding: 1rem 2.4rem;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #00e67c; transform: translateY(-2px); }
+    .btn-secondary {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      padding: 1rem 2.4rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    .hero-metrics {
+      position: absolute;
+      bottom: 4rem; right: 4rem;
+      display: flex;
+      gap: 3rem;
+    }
+    .metric {
+      text-align: right;
+    }
+    .metric-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .metric-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION COMMON */
+    section { padding: 7rem 4rem; }
+    .section-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-tag::before {
+      content: '//';
+      color: var(--muted);
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-intro {
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+
+    /* AUDITS SECTION */
+    #audits { background: var(--bg2); }
+    .audits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .audit-card {
+      background: var(--bg2);
+      padding: 2.5rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .audit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--accent);
+      transition: height 0.3s;
+    }
+    .audit-card:hover::before { height: 100%; }
+    .audit-card:hover { background: rgba(0,255,140,0.03); }
+    .audit-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .audit-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .audit-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .audit-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .audit-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(0,255,140,0.2);
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .services-list { display: flex; flex-direction: column; gap: 1px; }
+    .service-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .service-item:hover, .service-item.active {
+      border-left-color: var(--accent);
+      background: rgba(0,255,140,0.04);
+    }
+    .service-item h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .service-item h3 span {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+    .service-item p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .service-detail {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      position: sticky;
+      top: 5rem;
+    }
+    .service-detail h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .service-detail p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .deliverables {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    .deliverables h4 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .deliverable-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .deliverable-item::before {
+      content: '→';
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      flex-shrink: 0;
+    }
+
+    /* PROCESS */
+    #processus { background: var(--bg2); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 3rem;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), var(--accent), transparent);
+    }
+    .step {
+      padding: 0 1.5rem;
+      padding-top: 5rem;
+      text-align: center;
+      position: relative;
+    }
+    .step-dot {
+      position: absolute;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px; height: 20px;
+      background: var(--bg2);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+    }
+    .step-dot::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .step-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+    .step h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .step p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* WHY US */
+    #pourquoi { background: var(--bg); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .why-content h2 { margin-bottom: 1rem; }
+    .why-list { margin-top: 2rem; }
+    .why-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .why-icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      background: rgba(0,255,140,0.08);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .why-item h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .why-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .why-visual {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -50%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,207,255,0.06) 0%, transparent 70%);
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .cert-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+    }
+    .cert-card h4 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+    .cert-card p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg2);
+      text-align: center;
+    }
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    #contact h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+    #contact .section-intro { margin: 0 auto 3rem; text-align: left; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+    .form-group {
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.2rem 0;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.5rem 1.2rem 1rem;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.5; }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group option { background: var(--bg); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .submit-btn {
+      width: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      padding: 1.2rem;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .submit-btn:hover { background: #00e67c; }
+    .contact-alt {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .contact-alt a { color: var(--accent2); text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor {
+      display: inline-block;
+      width: 3px; height: 0.85em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .delay-5 { animation-delay: 0.7s; }
+
+    /* TERMINAL WIDGET */
+    .terminal {
+      position: absolute;
+      bottom: 6rem;
+      right: 4rem;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.5rem;
+      width: 340px;
+      backdrop-filter: blur(12px);
+    }
+    .terminal-bar {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .t-red { background: #ff3c6e; }
+    .t-yellow { background: #ffb800; }
+    .t-green { background: #00ff8c; }
+    .terminal-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+    .t-prompt { color: var(--accent); }
+    .t-cmd { color: var(--text); }
+    .t-ok { color: var(--accent); }
+    .t-info { color: var(--accent2); }
+    .t-warn { color: #ffb800; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      section { padding: 5rem 1.5rem; }
+      .hero { padding: 0 1.5rem; }
+      .hero-metrics { display: none; }
+      .terminal { display: none; }
+      .services-layout { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+      .step { padding-top: 3rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">FORTIS<span>SEC</span></div>
+  <ul>
+    <li><a href="#audits">Audits</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#processus">Processus</a></li>
+    <li><a href="#pourquoi">Expertise</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Demander un devis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag fade-up delay-1">Sécurité & Infrastructure</div>
+    <h1 class="fade-up delay-2">
+      Protégez.<br>
+      <em>Auditez.</em><br>
+      Renforcez.
+    </h1>
+    <p class="hero-sub fade-up delay-3">
+      Experts en audit de sécurité et d'infrastructure IT. Nous identifions vos vulnérabilités et déployons des solutions robustes pour sécuriser durablement vos systèmes.
+    </p>
+    <div class="hero-actions fade-up delay-4">
+      <a href="#audits" class="btn-primary">Découvrir nos audits</a>
+      <a href="#contact" class="btn-secondary">Parler à un expert</a>
+    </div>
+  </div>
+
+  <div class="terminal fade-up delay-5">
+    <div class="terminal-bar">
+      <span class="t-dot t-red"></span>
+      <span class="t-dot t-yellow"></span>
+      <span class="t-dot t-green"></span>
+    </div>
+    <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">run audit --target client_network</span></div>
+    <div class="terminal-line"><span class="t-info">[*] Scanning 254 hosts...</span></div>
+    <div class="terminal-line"><span class="t-ok">[+] CVE-2024-1234 detected (CRITICAL)</span></div>
+    <div class="terminal-line"><span class="t-warn">[!] Weak TLS config on 3 endpoints</span></div>
+    <div class="terminal-line"><span class="t-ok">[+] Report generated: audit_2024.pdf</span></div>
+    <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">_</span><span class="cursor"></span></div>
+  </div>
+
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-val">200+</div>
+      <div class="metric-label">Audits réalisés</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">98%</div>
+      <div class="metric-label">Satisfaction client</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">0</div>
+      <div class="metric-label">Incidents post-audit</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDITS -->
+<section id="audits">
+  <div class="section-tag">01 — Nos audits</div>
+  <h2>Diagnostics complets<br>de votre environnement</h2>
+  <p class="section-intro">
+    De l'évaluation des risques à l'analyse des vulnérabilités, chaque audit est mené par nos consultants certifiés selon les référentiels les plus exigeants.
+  </p>
+  <div class="audits-grid">
+    <div class="audit-card">
+      <div class="audit-icon">🔍</div>
+      <div class="audit-num">AUDIT_01</div>
+      <h3>Audit de Sécurité Applicative</h3>
+      <p>Analyse approfondie de vos applications web et APIs. Tests d'intrusion, revue de code, conformité OWASP Top 10 et identification des vecteurs d'attaque.</p>
+      <div class="audit-tags">
+        <span class="tag">PENTEST</span>
+        <span class="tag">OWASP</span>
+        <span class="tag">API</span>
+        <span class="tag">CODE REVIEW</span>
+      </div>
+    </div>
+    <div class="audit-card">
+      <div class="audit-icon">🌐</div>
+      <div class="audit-num">AUDIT_02</div>
+      <h3>Audit d'Infrastructure Réseau</h3>
+      <p>Évaluation complète de votre architecture réseau : firewalls, VPN, segmentation, flux, exposition externe et cartographie des actifs critiques.</p>
+      <div class="audit-tags">
+        <span class="tag">NMAP</span>
+        <span class="tag">FIREWALL</span>
+        <span class="tag">VPN</span>
+        <span class="tag">VLAN</span>
+      </div>
+    </div>
+    <div class="audit-card">
+      <div class="audit-icon">☁️</div>
+      <div class="audit-num">AUDIT_03</div>
+      <h3>Audit Cloud & Conteneurisation</h3>
+      <p>Revue de votre configuration AWS, Azure, GCP ou on-premise. Conformité CIS Benchmarks, IAM, gestion des secrets et sécurité des workloads Kubernetes.</p>
+      <div class="audit-tags">
+        <span class="tag">AWS</span>
+        <span class="tag">AZURE</span>
+        <span class="tag">KUBERNETES</span>
+        <span class="tag">IAM</span>
+      </div>
+    </div>
+    <div class="audit-card">
+      <div class="audit-icon">🛡️</div>
+      <div class="audit-num">AUDIT_04</div>
+      <h3>Audit de Conformité & RGPD</h3>
+      <p>Évaluation de votre conformité aux normes ISO 27001, SOC 2, RGPD et NIS2. Analyse des politiques, procédures et contrôles organisationnels.</p>
+      <div class="audit-tags">
+        <span class="tag">ISO 27001</span>
+        <span class="tag">RGPD</span>
+        <span class="tag">NIS2</span>
+        <span class="tag">SOC2</span>
+      </div>
+    </div>
+    <div class="audit-card">
+      <div class="audit-icon">💻</div>
+      <div class="audit-num">AUDIT_05</div>
+      <h3>Audit Active Directory & IAM</h3>
+      <p>Analyse de votre annuaire AD, GPO, délégations, comptes privilégiés. Détection des chemins d'escalade de privilèges et des configurations à risque.</p>
+      <div class="audit-tags">
+        <span class="tag">ACTIVE DIRECTORY</span>
+        <span class="tag">GPO</span>
+        <span class="tag">PAM</span>
+        <span class="tag">BLOODHOUND</span>
+      </div>
+    </div>
+    <div class="audit-card">
+      <div class="audit-icon">📱</div>
+      <div class="audit-num">AUDIT_06</div>
+      <h3>Audit Posture & Sensibilisation</h3>
+      <p>Évaluation de la maturité cyber de votre organisation : campagnes de phishing simulées, test des employés, revue des procédures de réponse aux incidents.</p>
+      <div class="audit-tags">
+        <span class="tag">PHISHING</span>
+        <span class="tag">SOCIAL ENGINEERING</span>
+        <span class="tag">AWARENESS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">02 — Prestations</div>
+  <h2>Mise en œuvre<br>& accompagnement</h2>
+  <p class="section-intro">
+    Au-delà du diagnostic, nous déployons concrètement les solutions pour corriger les vulnérabilités identifiées et renforcer durablement votre posture de sécurité.
+  </p>
+
+  <div class="services-layout">
+    <div class="services-list">
+      <div class="service-item active" onclick="selectService(0, this)">
+        <h3>Remediation & Hardening <span>→</span></h3>
+        <p>Application des correctifs et renforcement de la configuration de vos systèmes selon les recommandations de l'audit.</p>
+      </div>
+      <div class="service-item" onclick="selectService(1, this)">
+        <h3>Architecture Sécurisée <span>→</span></h3>
+        <p>Conception et déploiement d'architectures Zero Trust, DMZ, micro-segmentation et contrôles d'accès renforcés.</p>
+      </div>
+      <div class="service-item" onclick="selectService(2, this)">
+        <h3>SOC & Supervision <span>→</span></h3>
+        <p>Mise en place d'un SOC externalisé ou interne, déploiement SIEM/SOAR, règles de détection et playbooks d'incidents.</p>
+      </div>
+      <div class="service-item" onclick="selectService(3, this)">
+        <h3>Formation & Transfert <span>→</span></h3>
+        <p>Formations techniques pour vos équipes IT et sessions de sensibilisation pour l'ensemble de vos collaborateurs.</p>
+      </div>
+      <div class="service-item" onclick="selectService(4, this)">
+        <h3>Plan de Continuité (PCA/PRA) <span>→</span></h3>
+        <p>Élaboration et test de vos plans de continuité d'activité et de reprise après sinistre.</p>
+      </div>
+    </div>
+
+    <div class="service-detail" id="service-detail">
+      <div class="mono" style="font-size:0.7rem; color:var(--accent); letter-spacing:0.15em; margin-bottom:1rem;">SERVICE_ACTIF</div>
+      <h3 id="sd-title">Remediation & Hardening</h3>
+      <p id="sd-desc">Suite à l'audit, nous prenons en charge la correction des vulnérabilités identifiées. Nos ingénieurs appliquent les patchs de sécurité, durcissent les configurations (CIS Benchmarks, ANSSI) et vérifient chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.</p>
+      <div class="deliverables">
+        <h4>Livrables inclus</h4>
+        <div id="sd-deliverables">
+          <div class="deliverable-item">Plan de remédiation priorisé (CVSS)</div>
+          <div class="deliverable-item">Application des correctifs système</div>
+          <div class="deliverable-item">Durcissement configuration (CIS/ANSSI)</div>
+          <div class="deliverable-item">Re-test de validation post-correction</div>
+          <div class="deliverable-item">Rapport de clôture signé</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus">
+  <div class="section-tag">03 — Méthodologie</div>
+  <h2>Notre processus en 5 étapes</h2>
+  <p class="section-intro">Une approche structurée et transparente, de la prise en charge initiale à la livraison des solutions opérationnelles.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">STEP_01</div>
+      <h3>Qualification</h3>
+      <p>Analyse du périmètre, des enjeux métier et définition des objectifs de l'audit avec vos équipes.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">STEP_02</div>
+      <h3>Reconnaissance</h3>
+      <p>Collecte passive et active d'informations, cartographie des actifs et identification de la surface d'attaque.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">STEP_03</div>
+      <h3>Analyse</h3>
+      <p>Tests techniques approfondis, exploitation contrôlée et évaluation des impacts potentiels.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">STEP_04</div>
+      <h3>Rapport</h3>
+      <p>Livraison d'un rapport détaillé avec synthèse executive, preuves techniques et recommandations priorisées.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <div class="step-num">STEP_05</div>
+      <h3>Mise en œuvre</h3>
+      <p>Déploiement des solutions correctives, suivi de la remédiation et validation finale par re-test.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="pourquoi">
+  <div class="why-grid">
+    <div class="why-content">
+      <div class="section-tag">04 — Pourquoi nous</div>
+      <h2>Une expertise<br>sans compromis</h2>
+      <p class="section-intro">Des consultants certifiés OSCP, CEH, CISSP avec une expérience terrain sur des environnements critiques.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-icon">⚡</div>
+          <div>
+            <h4>Réactivité garantie</h4>
+            <p>Rapport préliminaire sous 48h, accompagnement dédié tout au long de la mission.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🔒</div>
+          <div>
+            <h4>Confidentialité absolue</h4>
+            <p>NDA systématique, données traitées en France, zero data retention sur vos environnements.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📊</div>
+          <div>
+            <h4>Approche orientée risque</h4>
+            <p>Priorisation des vulnérabilités par impact métier, pas seulement par score CVSS.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🎯</div>
+          <div>
+            <h4>Suivi post-mission</h4>
+            <p>3 mois de suivi inclus pour vérifier l'efficacité des mesures correctives déployées.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-visual">
+      <div class="section-tag" style="margin-bottom:1.5rem;">Certifications & Standards</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h4>OSCP / OSEP</h4>
+          <p>Offensive Security Certified Professional</p>
+        </div>
+        <div class="cert-card">
+          <h4>CISSP</h4>
+          <p>Certified Information Systems Security</p>
+        </div>
+        <div class="cert-card">
+          <h4>ISO 27001</h4>
+          <p>Lead Auditor certifié</p>
+        </div>
+        <div class="cert-card">
+          <h4>CEH / CPEH</h4>
+          <p>Certified Ethical Hacker</p>
+        </div>
+        <div class="cert-card">
+          <h4>ANSSI PASSI</h4>
+          <p>Prestataire d'Audit SSI qualifié</p>
+        </div>
+        <div class="cert-card">
+          <h4>CIS Benchmarks</h4>
+          <p>Center for Internet Security</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag" style="justify-content:center;">05 — Contact</div>
+    <h2>Commençons votre audit</h2>
+    <p class="section-intro" style="text-align:center; margin:1rem auto 3rem;">
+      Répondez à quelques questions et un consultant vous contacte sous 24h pour qualifier votre besoin et établir un devis.
+    </p>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom & Nom</label>
+          <input type="text" placeholder="Jean Dupont" />
+        </div>
+        <div class="form-group">
+          <label>Société</label>
+          <input type="text" placeholder="Acme Corp" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email professionnel</label>
+          <input type="email" placeholder="jean@acme.com" />
+        </div>
+        <div class="form-group">
+          <label>Type de prestation</label>
+          <select>
+            <option value="">— Sélectionner —</option>
+            <option>Audit de sécurité applicative</option>
+            <option>Audit d'infrastructure réseau</option>
+            <option>Audit Cloud</option>
+            <option>Audit de conformité</option>
+            <option>Audit Active Directory</option>
+            <option>Mise en œuvre de solutions</option>
+            <option>Formation & sensibilisation</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="background:var(--bg2);">
+        <label>Contexte & périmètre</label>
+        <textarea placeholder="Décrivez votre environnement, vos enjeux et vos contraintes..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Envoyer la demande →</button>
+    </div>
+    <p class="contact-alt">
+      Ou contactez-nous directement : <a href="mailto:contact@fortissec.fr">contact@fortissec.fr</a> — <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="logo" style="margin-bottom:0.4rem;">FORTIS<span style="color:var(--accent)">SEC</span></div>
+    <div class="footer-copy">© 2024 FORTiSSEC SAS — Tous droits réservés</div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique de confidentialité</a>
+    <a href="#">CGV</a>
+    <a href="mailto:contact@fortissec.fr">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const services = [
+    {
+      title: "Remediation & Hardening",
+      desc: "Suite à l'audit, nous prenons en charge la correction des vulnérabilités identifiées. Nos ingénieurs appliquent les patchs de sécurité, durcissent les configurations (CIS Benchmarks, ANSSI) et vérifient chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.",
+      deliverables: ["Plan de remédiation priorisé (CVSS)", "Application des correctifs système", "Durcissement configuration (CIS/ANSSI)", "Re-test de validation post-correction", "Rapport de clôture signé"]
+    },
+    {
+      title: "Architecture Sécurisée",
+      desc: "Conception d'une architecture Zero Trust adaptée à votre organisation. Mise en place de micro-segmentation réseau, DMZ, contrôles d'accès granulaires et identité forte (MFA, PAM). Déploiement accompagné, documentation et transfert de compétences inclus.",
+      deliverables: ["Schéma d'architecture cible", "Déploiement Zero Trust / DMZ", "Configuration MFA & PAM", "Micro-segmentation réseau", "Documentation technique complète"]
+    },
+    {
+      title: "SOC & Supervision",
+      desc: "Déploiement d'un Security Operations Center adapté à votre taille et vos enjeux. Intégration SIEM (Splunk, Elastic, Wazuh), création de règles de détection sur-mesure, playbooks d'incident et supervision 24/7 par nos analystes certifiés.",
+      deliverables: ["Déploiement SIEM / SOAR", "Règles de détection personnalisées", "Playbooks réponse incidents", "Tableaux de bord temps réel", "Supervision 24/7 (option)"]
+    },
+    {
+      title: "Formation & Transfert",
+      desc: "Formations techniques sur la sécurité offensive/défensive pour vos équipes IT, et sessions de sensibilisation adaptées à tous vos collaborateurs. Simulations de phishing, ateliers hands-on et certifications préparées en interne.",
+      deliverables: ["Formation sécurité (équipes IT)", "Sensibilisation collaborateurs", "Campagnes phishing simulées", "E-learning sur-mesure", "Attestations de formation"]
+    },
+    {
+      title: "Plan de Continuité (PCA/PRA)",
+      desc: "Élaboration complète de votre Plan de Continuité d'Activité et Plan de Reprise après Sinistre. Analyse d'impact (BIA), définition des RPO/RTO, tests réguliers et révision annuelle pour garantir votre résilience opérationnelle.",
+      deliverables: ["Analyse d'impact (BIA)", "Rédaction PCA / PRA", "Définition RPO & RTO", "Tests de bascule et exercices", "Révision et mise à jour annuelle"]
+    }
+  ];
+
+  function selectService(idx, el) {
+    document.querySelectorAll('.service-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    const s = services[idx];
+    document.getElementById('sd-title').textContent = s.title;
+    document.getElementById('sd-desc').textContent = s.desc;
+    const dl = document.getElementById('sd-deliverables');
+    dl.innerHTML = s.deliverables.map(d => `<div class="deliverable-item">${d}</div>`).join('');
+  }
+
+  function handleSubmit() {
+    alert('Merci pour votre message ! Un consultant vous contactera sous 24h.');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.audit-card, .service-item, .step, .why-item, .cert-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

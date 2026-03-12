@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -31,7 +32,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${outfit.variable}`}>
-      <body className="font-outfit antialiased">{children}</body>
+      <body className="font-outfit antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

@@ -4,8 +4,8 @@ import { SELECT_OPTIONS } from "@/lib/data";
 
 const CONTACT_DETAILS = [
   { icon: "✉️", label: "contact@mistral-it.fr", href: "mailto:contact@mistral-it.fr" },
-  { icon: "📞", label: "+33 1 23 45 67 89", href: "tel:+33123456789" },
-  { icon: "📍", label: "Lyon · Paris · Bordeaux", href: null },
+  { icon: "📞", label: "+33 6 42 03 17 54", href: "tel:+33642031754" },
+  { icon: "📍", label: "Carpentras · Vaucluse", href: null },
 ];
 
 export default function ContactSection() {
@@ -132,7 +132,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                     >
                       <option value="">Sélectionner…</option>
-                      {SELECT_OPTIONS.map((o) => (
+                      {SELECT_OPTIONS.map((o: string) => (
                         <option key={o} value={o}>
                           {o}
                         </option>

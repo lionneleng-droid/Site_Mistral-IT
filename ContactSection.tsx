@@ -132,7 +132,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                     >
                       <option value="">Sélectionner…</option>
-                      {SELECT_OPTIONS.map((o) => (
+                      {SELECT_OPTIONS.map((o: string) => (
                         <option key={o} value={o}>
                           {o}
                         </option>

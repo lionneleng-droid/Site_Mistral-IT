@@ -26,7 +26,7 @@ export default function HeroSection() {
 
         <h1 className="fade-up delay-2 font-playfair font-bold text-ink leading-[1.08] tracking-tight text-4xl sm:text-5xl xl:text-[4rem] mb-6">
           Votre sécurité,{" "}
-          <em className="text-sky not-italic">notre expertise.</em>
+          <em className="text-sky not-italic">notre priorité.</em>
         </h1>
 
         <p className="fade-up delay-3 text-slate font-light text-[1.05rem] leading-relaxed max-w-[480px] mb-9">
@@ -76,7 +76,7 @@ export default function HeroSection() {
                 Rapport d'audit en cours
               </p>
               <p className="text-xs text-muted">
-                Client : Acme Corp · Infrastructure réseau
+                Client : Mistral Corp · Infrastructure réseau
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function HeroSection() {
           </div>
           <div>
             <p className="text-[0.7rem] text-muted">Rapport livré sous</p>
-            <p className="font-bold text-sm text-ink">48 heures</p>
+            <p className="font-bold text-sm text-ink">72 heures</p>
           </div>
         </div>
       </div>

@@ -4,10 +4,10 @@ export default function WhySection() {
   const PROJECTS = [
     { icon: "🔧", title: "Remédiation Active Directory", desc: "Audit et sécurisation d'infrastructures AD complexes" },
     { icon: "☁️", title: "Migration VMware → AWS EC2", desc: "Lift & shift de workloads critiques vers le cloud" },
+    { icon: "📡", title: "Migration Hyper-V → AWS EC2", desc: "Consolidation infrastructure cloud hybride" },
     { icon: "⚙️", title: "Automatisation Ansible", desc: "Déploiement infra as code et gestion de configurations" },
     { icon: "🏗️", title: "Tiering Active Directory", desc: "Architecture sécurisée PAW & tier 0/1/2" },
     { icon: "🌐", title: "Tiering Réseau", desc: "Segmentation avancée et architecture Zero Trust" },
-    { icon: "📡", title: "Migration Hyper-V → Azure", desc: "Consolidation infrastructure cloud hybride" },
   ];
 
   return (
@@ -56,11 +56,11 @@ export default function WhySection() {
             Expertise Éprouvée
           </h3>
           <p className="text-muted text-sm font-light mb-2">
-            12 ans d'expérience terrain
+            6 ans d'expérience terrain
           </p>
           <div className="bg-white rounded-xl p-4 mb-7 border border-[#e4e8ef]">
-            <p className="text-sky font-bold text-lg">Dizaines</p>
-            <p className="text-muted text-sm font-light">de projets infrastructure, réseaux et cloud en production</p>
+            <p className="text-sky font-bold text-lg">Administrateur Systèmes, réseaux & DevOps</p>
+            <p className="text-muted text-sm font-light">Des projets en infrastructure, réseaux et cloud</p>
           </div>
 
           <h4 className="font-semibold text-ink text-sm uppercase tracking-wide mb-4 text-muted">

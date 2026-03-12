@@ -12,13 +12,13 @@ export default function ServicesSection() {
         Nos prestations
       </p>
       <h2 className="font-playfair font-bold text-ink text-3xl sm:text-[2.6rem] leading-tight tracking-tight mb-4">
-        Mise en œuvre &amp;
+        Remédiation &amp;
         <br />
-        accompagnement
+        mise en production
       </h2>
       <p className="text-slate font-light text-[1rem] leading-relaxed max-w-lg mb-14">
-        Au-delà du diagnostic, nous déployons les solutions pour corriger les
-        vulnérabilités et renforcer durablement votre posture de sécurité.
+        Au-delà de l'audit infrastructure, nous déployons les solutions pour corriger les
+        vulnérabilités, sécuriser votre architecture réseau et renforcer durablement votre infrastructure IT.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 items-start">

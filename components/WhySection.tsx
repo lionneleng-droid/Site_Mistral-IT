@@ -1,4 +1,4 @@
-import { WHY_ITEMS, CERTS } from "@/lib/data";
+import { WHY_ITEMS, CERTS } from "@/data";
 
 export default function WhySection() {
   return (

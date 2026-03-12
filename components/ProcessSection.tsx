@@ -1,4 +1,4 @@
-import { STEPS } from "@/lib/data";
+import { STEPS } from "@/data";
 
 export default function ProcessSection() {
   return (

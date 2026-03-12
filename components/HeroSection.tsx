@@ -1,5 +1,5 @@
-import { STATS, AUDIT_PROGRESS } from "@/lib/data";
-import CyberBackground from "@/components/CyberBackground";
+import { STATS, AUDIT_PROGRESS } from "@/data";
+import CyberBackground from "../components/CyberBackground";
 
 export default function HeroSection() {
   return (

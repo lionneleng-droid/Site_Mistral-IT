@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SERVICES } from "@/lib/data";
+import { SERVICES } from "@/data";
 
 export default function ServicesSection() {
   const [active, setActive] = useState(0);

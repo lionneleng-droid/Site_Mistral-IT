@@ -1,4 +1,4 @@
-import { AUDITS } from "@/data";
+import { AUDITS } from "../data";
 
 export default function AuditsSection() {
   return (

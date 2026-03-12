@@ -1,4 +1,4 @@
-import { STATS, AUDIT_PROGRESS } from "@/data";
+import { STATS, AUDIT_PROGRESS } from "../data";
 import CyberBackground from "../components/CyberBackground";
 
 export default function HeroSection() {

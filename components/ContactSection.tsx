@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SELECT_OPTIONS } from "@/data";
+import { SELECT_OPTIONS } from "../data";
 
 const CONTACT_DETAILS = [
   { icon: "✉️", label: "contact@mistral-it.fr", href: "mailto:contact@mistral-it.fr" },

@@ -3,46 +3,46 @@
 
 export const AUDITS = [
   {
-    icon: "🔍",
-    title: "Sécurité Applicative",
+    icon: "🏗️",
+    title: "Audit Infrastructure",
     description:
-      "Tests d'intrusion, revue de code et conformité OWASP Top 10 sur vos applications web, mobiles et APIs.",
-    tags: ["Pentest", "OWASP", "API"],
+      "Analyse complète de votre infrastructure : virtualisation, stockage, datacenters et architectures hybrides. Identification des points de défaillance et optimisation des performances.",
+    tags: ["Virtualisation", "Stockage", "Datacenters"],
   },
   {
     icon: "🌐",
-    title: "Infrastructure Réseau",
+    title: "Audit Réseau & Sécurité",
     description:
-      "Évaluation de votre architecture réseau : firewalls, VPN, segmentation et cartographie des actifs critiques.",
-    tags: ["Firewall", "VPN", "VLAN"],
-  },
-  {
-    icon: "☁️",
-    title: "Cloud & Conteneurisation",
-    description:
-      "Revue de votre configuration AWS, Azure ou GCP. Conformité CIS Benchmarks, IAM et sécurité Kubernetes.",
-    tags: ["AWS", "Azure", "Kubernetes"],
-  },
-  {
-    icon: "🛡️",
-    title: "Conformité & RGPD",
-    description:
-      "Évaluation de votre conformité ISO 27001, RGPD et NIS2. Analyse des politiques et contrôles organisationnels.",
-    tags: ["ISO 27001", "RGPD", "NIS2"],
+      "Évaluation approfondie de votre architecture réseau : firewalls, VPN, segmentation, micro-segmentation et cartographie des flux critiques.",
+    tags: ["Firewall", "VPN", "Segmentation", "VLAN"],
   },
   {
     icon: "💻",
-    title: "Active Directory & IAM",
+    title: "Audit Serveurs & OS",
     description:
-      "Analyse de votre annuaire AD, GPO, délégations et comptes privilégiés. Détection des chemins d'escalade.",
-    tags: ["Active Directory", "PAM", "GPO"],
+      "Durcissement des serveurs (Windows/Linux), gestion des correctifs, configurations de sécurité et conformité CIS Benchmarks.",
+    tags: ["Windows", "Linux", "Hardening"],
   },
   {
-    icon: "👥",
-    title: "Posture & Sensibilisation",
+    icon: "☁️",
+    title: "Audit Infrastructure Cloud",
     description:
-      "Maturité cyber de votre organisation : phishing simulé, test des collaborateurs et revue des procédures.",
-    tags: ["Phishing", "Awareness", "OSINT"],
+      "Revue de votre environnement AWS, Azure ou GCP : conformité CIS Benchmarks, IAM, sécurité réseau et optimisation des coûts.",
+    tags: ["AWS", "Azure", "GCP"],
+  },
+  {
+    icon: "🎓",
+    title: "Sensibilisation & Bonnes Pratiques",
+    description:
+      "Programmes de sensibilisation à la cybersécurité pour tous les collaborateurs. Formations sur les bonnes pratiques, gestion des mots de passe, phishing et incident reporting.",
+    tags: ["Sensibilisation", "Formation", "Phishing", "Hygiène de sécurité"],
+  },
+  {
+    icon: "📚",
+    title: "Formation Cybersécurité Avancée",
+    description:
+      "Formations techniques approfondies pour vos équipes IT : sécurité défensive, audits, architecture sécurisée et gestion des incidents.",
+    tags: ["Défense", "Incident Response", "Architecture"],
   },
 ] as const;
 
@@ -187,15 +187,6 @@ export const WHY_ITEMS = [
   },
 ] as const;
 
-export const CERTS = [
-  { name: "OSCP / OSEP", description: "Offensive Security Certified Professional" },
-  { name: "CISSP", description: "Information Systems Security" },
-  { name: "ISO 27001", description: "Lead Auditor certifié" },
-  { name: "CEH / CPEH", description: "Certified Ethical Hacker" },
-  { name: "ANSSI PASSI", description: "Prestataire d'Audit SSI" },
-  { name: "NIS2 / RGPD", description: "Conformité réglementaire" },
-] as const;
-
 export const STATS = [
   { value: "200+", label: "Audits réalisés" },
   { value: "98%", label: "Satisfaction client" },
@@ -203,18 +194,18 @@ export const STATS = [
 ] as const;
 
 export const AUDIT_PROGRESS = [
-  { label: "Analyse réseau", pct: 100 },
-  { label: "Tests de vulnérabilités", pct: 87 },
-  { label: "Audit Active Directory", pct: 64 },
-  { label: "Conformité RGPD", pct: 41 },
+  { label: "Analyse infrastructure", pct: 100 },
+  { label: "Tests réseau", pct: 87 },
+  { label: "Audit serveurs", pct: 64 },
+  { label: "Conformité réglementaire", pct: 41 },
 ] as const;
 
 export const SELECT_OPTIONS = [
-  "Audit sécurité applicative",
-  "Audit infrastructure réseau",
-  "Audit Cloud",
-  "Audit conformité RGPD/NIS2",
-  "Audit Active Directory",
-  "Mise en œuvre de solutions",
+  "Audit infrastructure",
+  "Audit réseau et sécurité",
+  "Audit serveurs et OS",
+  "Audit infrastructure cloud",
+  "Audit continuité de service",
+  "Remediation et hardening",
   "Formation & sensibilisation",
 ] as const;

@@ -1,6 +1,15 @@
-import { WHY_ITEMS, CERTS } from "@/lib/data";
+import { WHY_ITEMS } from "../data";
 
 export default function WhySection() {
+  const PROJECTS = [
+    { icon: "🔧", title: "Remédiation Active Directory", desc: "Audit et sécurisation d'infrastructures AD complexes" },
+    { icon: "☁️", title: "Migration VMware → AWS EC2", desc: "Lift & shift de workloads critiques vers le cloud" },
+    { icon: "📡", title: "Migration Hyper-V → AWS EC2", desc: "Consolidation infrastructure cloud hybride" },
+    { icon: "⚙️", title: "Automatisation Ansible", desc: "Déploiement infra as code et gestion de configurations" },
+    { icon: "🏗️", title: "Tiering Active Directory", desc: "Architecture sécurisée PAW & tier 0/1/2" },
+    { icon: "🌐", title: "Tiering Réseau", desc: "Segmentation avancée et architecture Zero Trust" },
+  ];
+
   return (
     <section id="pourquoi" className="py-28 px-6 lg:px-20 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -15,7 +24,7 @@ export default function WhySection() {
             construit dans les détails
           </h2>
           <p className="text-slate font-light text-[1rem] leading-relaxed max-w-md mb-10">
-            Nos consultants certifiés apportent une expertise terrain sur des
+            Nos consultants apportent une expertise terrain sur des
             environnements critiques, avec une approche orientée résultat.
           </p>
 
@@ -41,23 +50,35 @@ export default function WhySection() {
           </div>
         </div>
 
-        {/* Right: certs */}
+        {/* Right: experience & projects */}
         <div className="bg-stone rounded-2xl p-8">
           <h3 className="font-playfair font-bold text-ink text-xl mb-1">
-            Certifications & Référentiels
+            Expertise Éprouvée
           </h3>
-          <p className="text-muted text-sm font-light mb-7">
-            Nos consultants sont certifiés et nos méthodes alignées sur les
-            standards internationaux.
+          <p className="text-muted text-sm font-light mb-2">
+            6 ans d'expérience terrain
           </p>
+          <div className="bg-white rounded-xl p-4 mb-7 border border-[#e4e8ef]">
+            <p className="text-sky font-bold text-lg">Administrateur Systèmes, réseaux & DevOps</p>
+            <p className="text-muted text-sm font-light">Des projets en infrastructure, réseaux et cloud</p>
+          </div>
+
+          <h4 className="font-semibold text-ink text-sm uppercase tracking-wide mb-4 text-muted">
+            Projets Réalisés
+          </h4>
           <div className="grid grid-cols-2 gap-3">
-            {CERTS.map((cert) => (
+            {PROJECTS.map((project) => (
               <div
-                key={cert.name}
-                className="reveal bg-white rounded-xl p-4 border border-[#e4e8ef]"
+                key={project.title}
+                className="bg-white rounded-lg p-3.5 border border-[#e4e8ef] hover:border-sky/30 transition-all"
               >
-                <p className="font-bold text-sky text-sm mb-0.5">{cert.name}</p>
-                <p className="text-muted text-xs font-light">{cert.description}</p>
+                <div className="text-[1.2rem] mb-2">{project.icon}</div>
+                <p className="font-semibold text-ink text-xs mb-1">
+                  {project.title}
+                </p>
+                <p className="text-muted text-xs font-light">
+                  {project.desc}
+                </p>
               </div>
             ))}
           </div>

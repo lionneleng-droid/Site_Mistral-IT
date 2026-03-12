@@ -1,4 +1,4 @@
-import { AUDITS } from "@/lib/data";
+import { AUDITS } from "../data";
 
 export default function AuditsSection() {
   return (
@@ -7,14 +7,14 @@ export default function AuditsSection() {
         Nos audits
       </p>
       <h2 className="font-playfair font-bold text-ink text-3xl sm:text-[2.6rem] leading-tight tracking-tight mb-4">
-        Un diagnostic complet
+        Audit complet de votre
         <br />
-        de votre environnement
+        infrastructure IT
       </h2>
       <p className="text-slate font-light text-[1rem] leading-relaxed max-w-lg mb-14">
-        De la sécurité applicative à la conformité réglementaire, chaque audit
-        est conduit par nos consultants certifiés selon les référentiels les plus
-        exigeants.
+        Infrastructure, réseaux et serveurs : nos experts analysent votre
+        architecture complète pour identifier les vulnérabilités, optimiser les
+        performances et assurer la conformité aux normes ISO 27001 et NIST.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

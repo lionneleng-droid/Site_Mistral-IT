@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mistral IT — Audits Sécurité & Infrastructure</title>
+  <meta name="description" content="Mistral IT accompagne les entreprises dans l'audit de leurs systèmes et la mise en œuvre de solutions IT robustes."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --stone:  #f7f5f2;
+      --white:  #ffffff;
+      --ink:    #1a2235;
+      --slate:  #3a4a63;
+      --muted:  #8492a6;
+      --sky:    #3b82f6;
+      --skylt:  #eff6ff;
+      --border: #e4e8ef;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 400; overflow-x: hidden; line-height: 1.6; }
+
+    /* ── Typography ── */
+    .eyebrow { font-size: .75rem; font-weight: 600; color: var(--sky); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 700; letter-spacing: -.02em; color: var(--ink); line-height: 1.18; margin-bottom: .9rem; }
+    .section-lead { font-size: 1rem; color: var(--slate); max-width: 520px; line-height: 1.8; margin-bottom: 3.5rem; font-weight: 300; }
+
+    /* ── Patterns ── */
+    .bg-circuit { background-color: var(--stone); background-image: linear-gradient(rgba(59,130,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.04) 1px,transparent 1px); background-size: 40px 40px; }
+    .bg-dots    { background-color: var(--stone); background-image: radial-gradient(circle,rgba(59,130,246,.12) 1px,transparent 1px); background-size: 28px 28px; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fillBar { from { width:0; } }
+    .fade-up { opacity:0; animation:fadeUp .6s ease forwards; }
+    .d1{animation-delay:.05s} .d2{animation-delay:.15s} .d3{animation-delay:.28s} .d4{animation-delay:.42s} .d5{animation-delay:.58s}
+    .progress-fill { animation: fillBar 1.4s ease forwards; }
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity .5s ease,transform .5s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 5rem; height:64px; background:rgba(255,255,255,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 2px 16px rgba(26,34,53,.07); }
+    .logo { display:flex; align-items:baseline; gap:.4rem; text-decoration:none; }
+    .logo-text { font-family:'Playfair Display',serif; font-weight:700; font-size:1.3rem; color:var(--ink); letter-spacing:-.01em; }
+    .logo-dot  { width:7px; height:7px; border-radius:50%; background:var(--sky); margin-bottom:3px; flex-shrink:0; }
+    nav ul { display:flex; gap:2.2rem; list-style:none; }
+    nav a  { font-size:.88rem; font-weight:500; color:var(--slate); text-decoration:none; transition:color .2s; }
+    nav a:hover { color:var(--sky); }
+    .nav-cta { font-size:.88rem; font-weight:600; padding:.6rem 1.5rem; background:var(--ink); color:#fff; border-radius:8px; text-decoration:none; transition:background .2s; }
+    .nav-cta:hover { background:var(--sky); }
+
+    /* ── HERO ── */
+    .hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem; padding:5rem 5rem 4rem; position:relative; overflow:hidden; }
+    .hero-bg   { position:absolute; inset:0; pointer-events:none; z-index:0; }
+    .hero-bg svg { width:100%; height:100%; }
+    .hero-veil { position:absolute; inset:0; pointer-events:none; z-index:1; background:linear-gradient(110deg,rgba(255,255,255,.84) 0%,rgba(255,255,255,.56) 55%,rgba(255,255,255,.22) 100%); }
+    .hero-left  { position:relative; z-index:2; }
+    .hero-right { position:relative; z-index:2; }
+
+    .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:600; color:var(--sky); letter-spacing:.12em; text-transform:uppercase; background:var(--skylt); padding:.4rem .9rem; border-radius:100px; margin-bottom:1.5rem; }
+    h1 { font-family:'Playfair Display',serif; font-size:clamp(2.6rem,5vw,4rem); font-weight:700; line-height:1.08; letter-spacing:-.02em; color:var(--ink); margin-bottom:1.4rem; }
+    h1 em { font-style:italic; color:var(--sky); }
+    .hero-sub { font-size:1.05rem; color:var(--slate); font-weight:300; line-height:1.8; max-width:460px; margin-bottom:2.2rem; }
+    .hero-actions { display:flex; gap:.9rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .btn-primary { font-size:.9rem; font-weight:600; padding:.85rem 2rem; background:var(--ink); color:#fff; border-radius:8px; border:2px solid var(--ink); text-decoration:none; transition:all .2s; }
+    .btn-primary:hover { background:var(--sky); border-color:var(--sky); }
+    .btn-outline { font-size:.9rem; font-weight:600; padding:.85rem 2rem; background:transparent; color:var(--ink); border-radius:8px; border:2px solid var(--border); text-decoration:none; transition:all .2s; }
+    .btn-outline:hover { border-color:var(--ink); }
+    .hero-stats { display:flex; gap:2.5rem; padding-top:1.8rem; border-top:1px solid var(--border); }
+    .stat-val { font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:var(--ink); line-height:1; margin-bottom:.25rem; }
+    .stat-label { font-size:.75rem; color:var(--muted); font-weight:500; }
+
+    .hero-card { background:var(--stone); border-radius:20px; border:1px solid var(--border); padding:2.5rem; }
+    .card-head { display:flex; align-items:center; gap:.9rem; margin-bottom:1.8rem; }
+    .card-icon { width:44px; height:44px; border-radius:12px; background:var(--skylt); display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0; }
+    .card-title { font-weight:600; font-size:.95rem; color:var(--ink); margin-bottom:.15rem; }
+    .card-sub   { font-size:.75rem; color:var(--muted); }
+    .progress-item { margin-bottom:1.1rem; }
+    .progress-label { display:flex; justify-content:space-between; font-size:.78rem; font-weight:500; color:var(--slate); margin-bottom:.4rem; }
+    .progress-track { height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+    .progress-fill  { height:100%; border-radius:3px; background:linear-gradient(90deg,#3b82f6,#60a5fa); }
+    .badge-ok { display:inline-flex; align-items:center; gap:.4rem; font-size:.75rem; font-weight:600; color:#059669; background:#ecfdf5; padding:.3rem .75rem; border-radius:100px; margin-top:1.2rem; }
+    .float-badge { position:absolute; bottom:-1.2rem; left:-1.8rem; background:#fff; border:1px solid var(--border); border-radius:16px; padding:.9rem 1.2rem; box-shadow:0 8px 30px rgba(26,34,53,.09); display:flex; align-items:center; gap:.75rem; }
+    .float-icon  { width:36px; height:36px; border-radius:10px; background:var(--skylt); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .float-label { font-size:.7rem; color:var(--muted); }
+    .float-val   { font-size:.88rem; font-weight:700; color:var(--ink); }
+
+    /* ── SECTIONS ── */
+    section { padding:7rem 5rem; }
+
+    /* ── AUDITS ── */
+    .audits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+    .audit-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:2rem; transition:all .25s; }
+    .audit-card:hover { border-color:var(--sky); box-shadow:0 4px 24px rgba(59,130,246,.08); transform:translateY(-3px); }
+    .audit-icon { width:46px; height:46px; border-radius:12px; background:var(--skylt); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.1rem; }
+    .audit-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:.5rem; line-height:1.3; }
+    .audit-card p  { font-size:.88rem; color:var(--slate); line-height:1.7; margin-bottom:1.1rem; font-weight:300; }
+    .tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag  { font-size:.7rem; font-weight:600; padding:.22rem .65rem; border-radius:100px; background:var(--stone); color:var(--slate); }
+
+    /* ── SERVICES ── */
+    .services-layout { display:grid; grid-template-columns:360px 1fr; gap:2.5rem; align-items:start; }
+    .service-nav { display:flex; flex-direction:column; gap:.4rem; }
+    .service-btn { text-align:left; padding:1.1rem 1.3rem; border-radius:12px; border:1px solid transparent; background:transparent; cursor:pointer; transition:all .2s; font-family:inherit; }
+    .service-btn:hover { background:var(--stone); }
+    .service-btn.active { background:var(--skylt); border-color:rgba(59,130,246,.2); }
+    .service-btn-title { font-weight:600; font-size:.95rem; color:var(--ink); display:flex; justify-content:space-between; align-items:center; margin-bottom:.2rem; }
+    .service-btn.active .service-btn-title { color:var(--sky); }
+    .service-btn-sub { font-size:.8rem; color:var(--muted); font-weight:300; }
+    .service-panel { background:var(--stone); border-radius:20px; padding:2.8rem; position:sticky; top:4.5rem; }
+    .panel-icon { width:54px; height:54px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 2px 12px rgba(26,34,53,.06); margin-bottom:1.3rem; }
+    .service-panel h3 { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:700; color:var(--ink); margin-bottom:.7rem; }
+    .service-panel p  { font-size:.9rem; color:var(--slate); line-height:1.8; margin-bottom:1.8rem; font-weight:300; }
+    .deliverables-title { font-size:.7rem; font-weight:700; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; margin-bottom:.9rem; }
+    .deliverable { display:flex; align-items:center; gap:.75rem; padding:.6rem 0; border-bottom:1px solid var(--border); font-size:.87rem; color:var(--slate); font-weight:300; }
+    .deliverable:last-child { border-bottom:none; }
+    .deliverable::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--sky); flex-shrink:0; }
+
+    /* ── PROCESSUS ── */
+    #processus h2 { color:#fff; }
+    .steps-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:2rem; position:relative; }
+    .steps-grid::before { content:''; position:absolute; top:1.7rem; left:10%; right:10%; height:1px; background:rgba(255,255,255,.1); }
+    .step { text-align:center; position:relative; }
+    .step-circle { width:3.4rem; height:3.4rem; border-radius:50%; background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.3); display:flex; align-items:center; justify-content:center; margin:0 auto 1.1rem; font-weight:700; font-size:.82rem; color:#60a5fa; position:relative; z-index:1; }
+    .step h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:#fff; margin-bottom:.4rem; }
+    .step p  { font-size:.8rem; color:rgba(255,255,255,.42); line-height:1.6; font-weight:300; }
+
+    /* ── WHY ── */
+    .why-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .why-items { display:flex; flex-direction:column; gap:1.2rem; margin-top:1rem; }
+    .why-item { display:flex; gap:1.1rem; align-items:flex-start; padding:1.3rem; border-radius:12px; border:1px solid var(--border); transition:all .2s; }
+    .why-item:hover { border-color:rgba(59,130,246,.3); background:var(--skylt); }
+    .why-icon { width:40px; height:40px; border-radius:10px; background:var(--skylt); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .why-item h4 { font-weight:600; font-size:.94rem; color:var(--ink); margin-bottom:.25rem; }
+    .why-item p  { font-size:.83rem; color:var(--muted); line-height:1.6; font-weight:300; }
+    .certs-panel { background:var(--stone); border-radius:20px; padding:2.5rem; }
+    .certs-panel h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:.3rem; }
+    .certs-panel .sub { font-size:.84rem; color:var(--muted); font-weight:300; margin-bottom:1.8rem; }
+    .certs-grid { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+    .cert-item { background:#fff; border-radius:10px; padding:1rem 1.2rem; border:1px solid var(--border); }
+    .cert-name { font-weight:700; font-size:.88rem; color:var(--sky); margin-bottom:.2rem; }
+    .cert-desc { font-size:.73rem; color:var(--muted); font-weight:300; }
+
+    /* ── CONTACT ── */
+    .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    .contact-details { display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
+    .contact-detail  { display:flex; align-items:center; gap:.75rem; font-size:.9rem; color:var(--slate); }
+    .contact-detail-icon { width:36px; height:36px; border-radius:8px; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .contact-detail a { color:var(--slate); text-decoration:none; transition:color .2s; }
+    .contact-detail a:hover { color:var(--sky); }
+    .contact-form { background:#fff; border-radius:16px; border:1px solid var(--border); padding:2.5rem; }
+    .form-title { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--ink); margin-bottom:.25rem; }
+    .form-sub   { font-size:.83rem; color:var(--muted); font-weight:300; margin-bottom:1.8rem; }
+    .form-row   { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:.9rem; }
+    .form-group label { font-size:.78rem; font-weight:600; color:var(--slate); }
+    .form-group input,.form-group select,.form-group textarea { padding:.7rem .95rem; border:1px solid var(--border); border-radius:8px; font-family:'Outfit',sans-serif; font-size:.9rem; color:var(--ink); background:#fff; outline:none; transition:border-color .2s,box-shadow .2s; width:100%; }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--sky); box-shadow:0 0 0 3px rgba(59,130,246,.08); }
+    .form-group input::placeholder,.form-group textarea::placeholder { color:var(--muted); }
+    .form-group select { appearance:none; cursor:pointer; }
+    .form-group textarea { resize:vertical; min-height:96px; }
+    .form-submit { width:100%; padding:.9rem; background:var(--ink); color:#fff; border:none; border-radius:8px; font-family:'Outfit',sans-serif; font-size:.95rem; font-weight:600; cursor:pointer; transition:background .2s; margin-top:.4rem; }
+    .form-submit:hover { background:var(--sky); }
+
+    /* ── FOOTER ── */
+    footer { background:var(--ink); padding:2.5rem 5rem; display:flex; align-items:center; justify-content:space-between; }
+    .footer-logo { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; margin-bottom:.25rem; }
+    .footer-copy { font-size:.75rem; color:rgba(255,255,255,.3); }
+    .footer-links { display:flex; gap:2rem; }
+    .footer-links a { font-size:.78rem; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+    .footer-links a:hover { color:rgba(255,255,255,.85); }
+
+    /* ── Responsive ── */
+    @media (max-width:1024px) {
+      nav,section,footer { padding-left:1.5rem; padding-right:1.5rem; }
+      nav ul,.hero-right { display:none; }
+      .hero { grid-template-columns:1fr; padding:6rem 1.5rem 3rem; }
+      .audits-grid { grid-template-columns:1fr 1fr; }
+      .services-layout,.why-layout,.contact-layout { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr 1fr; } .steps-grid::before { display:none; }
+      footer { flex-direction:column; gap:1.2rem; text-align:center; }
+      .form-row { grid-template-columns:1fr; }
+    }
+    @media (max-width:640px) { .audits-grid,.certs-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo"><span class="logo-text">Mistral IT</span><span class="logo-dot"></span></a>
+  <ul>
+    <li><a href="#audits">Audits</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#processus">Processus</a></li>
+    <li><a href="#pourquoi">Expertise</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Demander un devis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Cyber SVG background -->
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="#f0f6ff"/>
+          <stop offset="50%"  stop-color="#f7f5f2"/>
+          <stop offset="100%" stop-color="#eef2fb"/>
+        </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <clipPath id="clip"><rect width="100" height="100"/></clipPath>
+      </defs>
+      <rect width="100" height="100" fill="url(#bgGrad)"/>
+      <!-- Subtle hexagons -->
+      <g opacity="0.04" stroke="#1a2235" stroke-width="0.3" fill="none">
+        <polygon points="85,2 92,6 92,14 85,18 78,14 78,6"/>
+        <polygon points="89,5 96,9 96,17 89,21 82,17 82,9" opacity="0.7"/>
+        <polygon points="81,0 88,4 88,12 81,16 74,12 74,4" opacity="0.5"/>
+        <polygon points="93,11 100,15 100,23 93,27 86,23 86,15" opacity="0.4"/>
+      </g>
+      <g clip-path="url(#clip)">
+        <!-- Edges row 0 -->
+        <line x1="8"  y1="15" x2="22" y2="8"  stroke="#3b82f6" stroke-width="0.18" opacity="0.11"/>
+        <line x1="22" y1="8"  x2="38" y2="18" stroke="#3b82f6" stroke-width="0.18" opacity="0.10"/>
+        <line x1="38" y1="18" x2="52" y2="6"  stroke="#3b82f6" stroke-width="0.18" opacity="0.09"/>
+        <line x1="52" y1="6"  x2="67" y2="14" stroke="#3b82f6" stroke-width="0.18" opacity="0.10"/>
+        <line x1="67" y1="14" x2="80" y2="5"  stroke="#3b82f6" stroke-width="0.18" opacity="0.10"/>
+        <line x1="80" y1="5"  x2="92" y2="20" stroke="#3b82f6" stroke-width="0.18" opacity="0.09"/>
+        <!-- Vertical 0→1 -->
+        <line x1="8"  y1="15" x2="18" y2="35" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="22" y1="8"  x2="18" y2="35" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="38" y1="18" x2="32" y2="45" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="52" y1="6"  x2="47" y2="32" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="67" y1="14" x2="60" y2="42" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="80" y1="5"  x2="74" y2="30" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="92" y1="20" x2="88" y2="44" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="92" y1="20" x2="95" y2="35" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <!-- Edges row 1 -->
+        <line x1="5"  y1="40" x2="18" y2="35" stroke="#3b82f6" stroke-width="0.18" opacity="0.09"/>
+        <line x1="18" y1="35" x2="32" y2="45" stroke="#3b82f6" stroke-width="0.18" opacity="0.09"/>
+        <line x1="32" y1="45" x2="47" y2="32" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="47" y1="32" x2="60" y2="42" stroke="#3b82f6" stroke-width="0.18" opacity="0.09"/>
+        <line x1="60" y1="42" x2="74" y2="30" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="74" y1="30" x2="88" y2="44" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="88" y1="44" x2="95" y2="35" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <!-- Vertical 1→2 -->
+        <line x1="5"  y1="40" x2="10" y2="65" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="18" y1="35" x2="25" y2="72" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="32" y1="45" x2="40" y2="60" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="47" y1="32" x2="55" y2="70" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="60" y1="42" x2="70" y2="62" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="74" y1="30" x2="83" y2="74" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="88" y1="44" x2="93" y2="65" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="95" y1="35" x2="93" y2="65" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <!-- Edges row 2 -->
+        <line x1="10" y1="65" x2="25" y2="72" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="25" y1="72" x2="40" y2="60" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="40" y1="60" x2="55" y2="70" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="55" y1="70" x2="70" y2="62" stroke="#3b82f6" stroke-width="0.18" opacity="0.08"/>
+        <line x1="70" y1="62" x2="83" y2="74" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="83" y1="74" x2="93" y2="65" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <!-- Vertical 2→3 -->
+        <line x1="10" y1="65" x2="15" y2="88" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="25" y1="72" x2="30" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="40" y1="60" x2="48" y2="86" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="55" y1="70" x2="63" y2="94" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="70" y1="62" x2="78" y2="88" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <line x1="83" y1="74" x2="90" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="93" y1="65" x2="90" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <!-- Edges row 3 -->
+        <line x1="15" y1="88" x2="30" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="30" y1="92" x2="48" y2="86" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="48" y1="86" x2="63" y2="94" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="63" y1="94" x2="78" y2="88" stroke="#3b82f6" stroke-width="0.18" opacity="0.07"/>
+        <line x1="78" y1="88" x2="90" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.06"/>
+        <!-- Cross-connections -->
+        <line x1="22" y1="8"  x2="32" y2="45" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="52" y1="6"  x2="60" y2="42" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="80" y1="5"  x2="88" y2="44" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="18" y1="35" x2="40" y2="60" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="47" y1="32" x2="70" y2="62" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="60" y1="42" x2="83" y2="74" stroke="#3b82f6" stroke-width="0.18" opacity="0.05"/>
+        <line x1="40" y1="60" x2="63" y2="94" stroke="#3b82f6" stroke-width="0.18" opacity="0.04"/>
+        <line x1="70" y1="62" x2="90" y2="92" stroke="#3b82f6" stroke-width="0.18" opacity="0.04"/>
+
+        <!-- NODES – row 0 -->
+        <g filter="url(#glow)"><circle cx="8"  cy="15" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3s"   begin="0s"    repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="3s"   begin="0s"    repeatCount="indefinite"/></circle><circle cx="8"  cy="15" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="8"  cy="15" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="22" cy="8"  r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.4s" begin="0.4s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="3.4s" begin="0.4s"  repeatCount="indefinite"/></circle><circle cx="22" cy="8"  r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="22" cy="8"  r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="38" cy="18" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.8s" begin="0.8s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.8s" begin="0.8s"  repeatCount="indefinite"/></circle><circle cx="38" cy="18" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="38" cy="18" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="52" cy="6"  r="13.2" fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.2s" begin="0.2s"  repeatCount="indefinite"/><animate attributeName="r" values="9;18;9"         dur="3.2s" begin="0.2s"  repeatCount="indefinite"/></circle><circle cx="52" cy="6"  r="3.3"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="52" cy="6"  r="1.32" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="67" cy="14" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.1s" begin="1.1s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="4.1s" begin="1.1s"  repeatCount="indefinite"/></circle><circle cx="67" cy="14" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="67" cy="14" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="80" cy="5"  r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.6s" begin="0.6s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.6s" begin="0.6s"  repeatCount="indefinite"/></circle><circle cx="80" cy="5"  r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="80" cy="5"  r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="92" cy="20" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.3s" begin="0.3s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="3.3s" begin="0.3s"  repeatCount="indefinite"/></circle><circle cx="92" cy="20" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="92" cy="20" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <!-- NODES – row 1 -->
+        <g filter="url(#glow)"><circle cx="5"  cy="40" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.2s" begin="1.2s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="4.2s" begin="1.2s"  repeatCount="indefinite"/></circle><circle cx="5"  cy="40" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="5"  cy="40" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="18" cy="35" r="13.2" fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.5s" begin="0.5s"  repeatCount="indefinite"/><animate attributeName="r" values="9;18;9"         dur="3.5s" begin="0.5s"  repeatCount="indefinite"/></circle><circle cx="18" cy="35" r="3.3"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="18" cy="35" r="1.32" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="32" cy="45" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.9s" begin="0.9s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="3.9s" begin="0.9s"  repeatCount="indefinite"/></circle><circle cx="32" cy="45" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="32" cy="45" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="47" cy="32" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.1s" begin="0.1s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.1s" begin="0.1s"  repeatCount="indefinite"/></circle><circle cx="47" cy="32" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="47" cy="32" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="60" cy="42" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.7s" begin="0.7s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="3.7s" begin="0.7s"  repeatCount="indefinite"/></circle><circle cx="60" cy="42" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="60" cy="42" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="74" cy="30" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.3s" begin="1.3s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="4.3s" begin="1.3s"  repeatCount="indefinite"/></circle><circle cx="74" cy="30" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="74" cy="30" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="88" cy="44" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.4s" begin="0.4s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.4s" begin="0.4s"  repeatCount="indefinite"/></circle><circle cx="88" cy="44" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="88" cy="44" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="95" cy="35" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.0s" begin="1.0s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="4.0s" begin="1.0s"  repeatCount="indefinite"/></circle><circle cx="95" cy="35" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="95" cy="35" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <!-- NODES – row 2 -->
+        <g filter="url(#glow)"><circle cx="10" cy="65" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.6s" begin="0.6s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="3.6s" begin="0.6s"  repeatCount="indefinite"/></circle><circle cx="10" cy="65" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="10" cy="65" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="25" cy="72" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.4s" begin="1.4s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="4.4s" begin="1.4s"  repeatCount="indefinite"/></circle><circle cx="25" cy="72" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="25" cy="72" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="40" cy="60" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.2s" begin="0.2s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="3.2s" begin="0.2s"  repeatCount="indefinite"/></circle><circle cx="40" cy="60" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="40" cy="60" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="55" cy="70" r="13.2" fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.8s" begin="0.8s"  repeatCount="indefinite"/><animate attributeName="r" values="9;18;9"         dur="3.8s" begin="0.8s"  repeatCount="indefinite"/></circle><circle cx="55" cy="70" r="3.3"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="55" cy="70" r="1.32" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="70" cy="62" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.5s" begin="0.5s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.5s" begin="0.5s"  repeatCount="indefinite"/></circle><circle cx="70" cy="62" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="70" cy="62" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="83" cy="74" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.1s" begin="1.1s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="4.1s" begin="1.1s"  repeatCount="indefinite"/></circle><circle cx="83" cy="74" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="83" cy="74" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="93" cy="65" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.3s" begin="0.3s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="3.3s" begin="0.3s"  repeatCount="indefinite"/></circle><circle cx="93" cy="65" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="93" cy="65" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <!-- NODES – row 3 -->
+        <g filter="url(#glow)"><circle cx="15" cy="88" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.9s" begin="0.9s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="3.9s" begin="0.9s"  repeatCount="indefinite"/></circle><circle cx="15" cy="88" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="15" cy="88" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="30" cy="92" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.1s" begin="0.1s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.1s" begin="0.1s"  repeatCount="indefinite"/></circle><circle cx="30" cy="92" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="30" cy="92" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="48" cy="86" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.7s" begin="0.7s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="3.7s" begin="0.7s"  repeatCount="indefinite"/></circle><circle cx="48" cy="86" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="48" cy="86" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="63" cy="94" r="8.8"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.2s" begin="1.2s"  repeatCount="indefinite"/><animate attributeName="r" values="6;13.2;6"     dur="4.2s" begin="1.2s"  repeatCount="indefinite"/></circle><circle cx="63" cy="94" r="2.2"  fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="63" cy="94" r="0.88" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="78" cy="88" r="6.6"  fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="3.4s" begin="0.4s"  repeatCount="indefinite"/><animate attributeName="r" values="4.5;9.9;4.5"   dur="3.4s" begin="0.4s"  repeatCount="indefinite"/></circle><circle cx="78" cy="88" r="1.65" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="78" cy="88" r="0.66" fill="#3b82f6" opacity="0.8"/></g>
+        <g filter="url(#glow)"><circle cx="90" cy="92" r="11"   fill="#3b82f6" opacity="0"><animate attributeName="opacity" values="0;0.06;0" dur="4.5s" begin="1.5s"  repeatCount="indefinite"/><animate attributeName="r" values="7.5;15;7.5"   dur="4.5s" begin="1.5s"  repeatCount="indefinite"/></circle><circle cx="90" cy="92" r="2.75" fill="white" stroke="#3b82f6" stroke-width="0.25" opacity="0.7"/><circle cx="90" cy="92" r="1.1"  fill="#3b82f6" opacity="0.8"/></g>
+
+        <!-- FLOW PARTICLES -->
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.5s" begin="0s"     repeatCount="indefinite" path="M 8 15 L 22 8"/><animate  attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.5s" begin="0s"     repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.9s" begin="0.37s"  repeatCount="indefinite" path="M 22 8 L 18 35"/><animate  attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.9s" begin="0.37s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.1s" begin="0.74s"  repeatCount="indefinite" path="M 52 6 L 47 32"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.1s" begin="0.74s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.7s" begin="1.11s"  repeatCount="indefinite" path="M 80 5 L 74 30"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.7s" begin="1.11s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.3s" begin="1.48s"  repeatCount="indefinite" path="M 18 35 L 40 60"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.3s" begin="1.48s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.5s" begin="1.85s"  repeatCount="indefinite" path="M 47 32 L 55 70"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.5s" begin="1.85s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.1s" begin="2.22s"  repeatCount="indefinite" path="M 48 86 L 63 94"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.1s" begin="2.22s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.9s" begin="2.59s"  repeatCount="indefinite" path="M 70 62 L 90 92"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.9s" begin="2.59s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.7s" begin="0.18s"  repeatCount="indefinite" path="M 38 18 L 32 45"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.7s" begin="0.18s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.1s" begin="0.55s"  repeatCount="indefinite" path="M 67 14 L 60 42"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.1s" begin="0.55s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.5s" begin="0.92s"  repeatCount="indefinite" path="M 92 20 L 88 44"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.5s" begin="0.92s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.3s" begin="1.29s"  repeatCount="indefinite" path="M 60 42 L 83 74"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.3s" begin="1.29s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.9s" begin="1.66s"  repeatCount="indefinite" path="M 40 60 L 63 94"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.9s" begin="1.66s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="3.1s" begin="2.03s"  repeatCount="indefinite" path="M 25 72 L 48 86"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="3.1s" begin="2.03s"  repeatCount="indefinite"/></circle>
+        <circle r="0.38" fill="#3b82f6" opacity="0"><animateMotion dur="2.7s" begin="2.40s"  repeatCount="indefinite" path="M 63 94 L 78 88"/><animate   attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="2.7s" begin="2.40s"  repeatCount="indefinite"/></circle>
+
+        <!-- Hex / binary labels -->
+        <text x="3"  y="28" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">0x4A2F</text>
+        <text x="62" y="52" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">10110</text>
+        <text x="42" y="80" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">0xFF3C</text>
+        <text x="82" y="58" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">01001</text>
+        <text x="20" y="55" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">0xA9D1</text>
+        <text x="70" y="82" font-size="1.6" fill="#1a2235" opacity="0.07" font-family="monospace" letter-spacing="0.3">11010</text>
+
+        <!-- Lock icon -->
+        <g transform="translate(44,43) scale(0.08)" opacity="0.06" fill="#1a2235">
+          <rect x="10" y="30" width="60" height="45" rx="6"/>
+          <path d="M20 30 V20 Q40 5 60 20 V30" stroke-width="6" stroke="#1a2235" fill="none"/>
+          <circle cx="40" cy="52" r="6" fill="white"/>
+          <rect x="37" y="52" width="6" height="10" fill="white"/>
+        </g>
+        <!-- Shield icon -->
+        <g transform="translate(72,20) scale(0.07)" opacity="0.06" fill="#1a2235">
+          <path d="M40 5 L75 18 L75 45 Q75 70 40 80 Q5 70 5 45 L5 18 Z"/>
+          <path d="M25 42 L36 53 L57 32" stroke="white" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-veil"></div>
+
+  <!-- Left -->
+  <div class="hero-left">
+    <span class="hero-badge fade-up d1">↗ Sécurité · Infrastructure · Évolution</span>
+    <h1 class="fade-up d2">Votre sécurité,<br><em>notre expertise.</em></h1>
+    <p class="hero-sub fade-up d3">Mistral IT accompagne les entreprises dans l'audit de leurs systèmes et la mise en œuvre de solutions IT robustes. Une approche claire, des résultats concrets.</p>
+    <div class="hero-actions fade-up d4">
+      <a href="#audits" class="btn-primary">Découvrir nos audits</a>
+      <a href="#contact" class="btn-outline">Parler à un expert</a>
+    </div>
+    <div class="hero-stats fade-up d5">
+      <div><div class="stat-val">200+</div><div class="stat-label">Audits réalisés</div></div>
+      <div><div class="stat-val">98%</div><div class="stat-label">Satisfaction client</div></div>
+      <div><div class="stat-val">12 ans</div><div class="stat-label">d'expertise terrain</div></div>
+    </div>
+  </div>
+
+  <!-- Right card -->
+  <div class="hero-right fade-up d3" style="position:relative;">
+    <div class="hero-card">
+      <div class="card-head">
+        <div class="card-icon">🔍</div>
+        <div><div class="card-title">Rapport d'audit en cours</div><div class="card-sub">Client : Acme Corp · Infrastructure réseau</div></div>
+      </div>
+      <div class="progress-item"><div class="progress-label"><span>Analyse réseau</span><span>100%</span></div><div class="progress-track"><div class="progress-fill" style="width:100%"></div></div></div>
+      <div class="progress-item"><div class="progress-label"><span>Tests de vulnérabilités</span><span>87%</span></div><div class="progress-track"><div class="progress-fill" style="width:87%"></div></div></div>
+      <div class="progress-item"><div class="progress-label"><span>Audit Active Directory</span><span>64%</span></div><div class="progress-track"><div class="progress-fill" style="width:64%"></div></div></div>
+      <div class="progress-item"><div class="progress-label"><span>Conformité RGPD</span><span>41%</span></div><div class="progress-track"><div class="progress-fill" style="width:41%"></div></div></div>
+      <span class="badge-ok">✓ 3 vulnérabilités critiques identifiées</span>
+    </div>
+    <div class="float-badge"><div class="float-icon">📋</div><div><div class="float-label">Rapport livré sous</div><div class="float-val">48 heures</div></div></div>
+  </div>
+</section>
+
+<!-- AUDITS -->
+<section id="audits" class="bg-circuit">
+  <div class="eyebrow">Nos audits</div>
+  <h2>Un diagnostic complet<br>de votre environnement</h2>
+  <p class="section-lead">De la sécurité applicative à la conformité réglementaire, chaque audit est conduit par nos consultants certifiés selon les référentiels les plus exigeants.</p>
+  <div class="audits-grid">
+    <div class="audit-card reveal"><div class="audit-icon">🔍</div><h3>Sécurité Applicative</h3><p>Tests d'intrusion, revue de code et conformité OWASP Top 10 sur vos applications web, mobiles et APIs.</p><div class="tags"><span class="tag">Pentest</span><span class="tag">OWASP</span><span class="tag">API</span></div></div>
+    <div class="audit-card reveal"><div class="audit-icon">🌐</div><h3>Infrastructure Réseau</h3><p>Évaluation de votre architecture réseau : firewalls, VPN, segmentation et cartographie des actifs critiques.</p><div class="tags"><span class="tag">Firewall</span><span class="tag">VPN</span><span class="tag">VLAN</span></div></div>
+    <div class="audit-card reveal"><div class="audit-icon">☁️</div><h3>Cloud & Conteneurisation</h3><p>Revue de votre configuration AWS, Azure ou GCP. Conformité CIS Benchmarks, IAM et sécurité Kubernetes.</p><div class="tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Kubernetes</span></div></div>
+    <div class="audit-card reveal"><div class="audit-icon">🛡️</div><h3>Conformité & RGPD</h3><p>Évaluation de votre conformité ISO 27001, RGPD et NIS2. Analyse des politiques et contrôles organisationnels.</p><div class="tags"><span class="tag">ISO 27001</span><span class="tag">RGPD</span><span class="tag">NIS2</span></div></div>
+    <div class="audit-card reveal"><div class="audit-icon">💻</div><h3>Active Directory & IAM</h3><p>Analyse de votre annuaire AD, GPO, délégations et comptes privilégiés. Détection des chemins d'escalade.</p><div class="tags"><span class="tag">Active Directory</span><span class="tag">PAM</span><span class="tag">GPO</span></div></div>
+    <div class="audit-card reveal"><div class="audit-icon">👥</div><h3>Posture & Sensibilisation</h3><p>Maturité cyber de votre organisation : phishing simulé, test des collaborateurs et revue des procédures.</p><div class="tags"><span class="tag">Phishing</span><span class="tag">Awareness</span><span class="tag">OSINT</span></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:#fff;">
+  <div class="eyebrow">Nos prestations</div>
+  <h2>Mise en œuvre &amp;<br>accompagnement</h2>
+  <p class="section-lead">Au-delà du diagnostic, nous déployons les solutions pour corriger les vulnérabilités et renforcer durablement votre posture de sécurité.</p>
+  <div class="services-layout">
+    <div class="service-nav">
+      <button class="service-btn active" onclick="selectService(0,this)"><div class="service-btn-title">Remediation & Hardening <span>→</span></div><div class="service-btn-sub">Correction et durcissement des systèmes</div></button>
+      <button class="service-btn" onclick="selectService(1,this)"><div class="service-btn-title">Architecture Sécurisée <span>→</span></div><div class="service-btn-sub">Zero Trust, DMZ, micro-segmentation</div></button>
+      <button class="service-btn" onclick="selectService(2,this)"><div class="service-btn-title">SOC & Supervision <span>→</span></div><div class="service-btn-sub">SIEM, détection et réponse aux incidents</div></button>
+      <button class="service-btn" onclick="selectService(3,this)"><div class="service-btn-title">Formation & Transfert <span>→</span></div><div class="service-btn-sub">Montée en compétences de vos équipes</div></button>
+      <button class="service-btn" onclick="selectService(4,this)"><div class="service-btn-title">Plan de Continuité <span>→</span></div><div class="service-btn-sub">PCA, PRA, gestion de crise</div></button>
+    </div>
+    <div class="service-panel">
+      <div class="panel-icon" id="spIcon">🔧</div>
+      <h3 id="spTitle">Remediation & Hardening</h3>
+      <p id="spDesc">Suite à l'audit, nous prenons en charge la correction des vulnérabilités identifiées. Nos ingénieurs appliquent les patchs de sécurité, durcissent les configurations (CIS Benchmarks, ANSSI) et vérifient chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.</p>
+      <div class="deliverables-title">Livrables inclus</div>
+      <div id="spDeliverables">
+        <div class="deliverable">Plan de remédiation priorisé (CVSS)</div>
+        <div class="deliverable">Application des correctifs système</div>
+        <div class="deliverable">Durcissement configuration (CIS/ANSSI)</div>
+        <div class="deliverable">Re-test de validation post-correction</div>
+        <div class="deliverable">Rapport de clôture signé</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus" style="background:var(--ink); padding:7rem 5rem;">
+  <div class="eyebrow" style="color:#60a5fa;">Notre méthode</div>
+  <h2 style="color:#fff;">Un processus structuré,<br>une transparence totale</h2>
+  <p class="section-lead" style="color:rgba(255,255,255,.5);">De la qualification initiale au déploiement des solutions, chaque étape est documentée et partagée avec vous en temps réel.</p>
+  <div class="steps-grid">
+    <div class="step reveal"><div class="step-circle">01</div><h3>Qualification</h3><p>Analyse du périmètre, des enjeux métier et définition des objectifs avec vos équipes.</p></div>
+    <div class="step reveal"><div class="step-circle">02</div><h3>Reconnaissance</h3><p>Cartographie des actifs et identification de votre surface d'attaque réelle.</p></div>
+    <div class="step reveal"><div class="step-circle">03</div><h3>Analyse</h3><p>Tests techniques approfondis et évaluation des impacts potentiels sur votre activité.</p></div>
+    <div class="step reveal"><div class="step-circle">04</div><h3>Rapport</h3><p>Livraison d'un rapport détaillé avec synthèse executive et recommandations priorisées.</p></div>
+    <div class="step reveal"><div class="step-circle">05</div><h3>Mise en œuvre</h3><p>Déploiement des solutions correctives et validation finale par re-test complet.</p></div>
+  </div>
+</section>
+
+<!-- POURQUOI -->
+<section id="pourquoi" style="background:#fff;">
+  <div class="why-layout">
+    <div>
+      <div class="eyebrow">Pourquoi Mistral IT</div>
+      <h2>La confiance se<br>construit dans les détails</h2>
+      <p class="section-lead">Nos consultants certifiés apportent une expertise terrain sur des environnements critiques, avec une approche orientée résultat.</p>
+      <div class="why-items">
+        <div class="why-item reveal"><div class="why-icon">⚡</div><div><h4>Réactivité garantie</h4><p>Rapport préliminaire sous 48h, interlocuteur dédié tout au long de la mission.</p></div></div>
+        <div class="why-item reveal"><div class="why-icon">🔒</div><div><h4>Confidentialité absolue</h4><p>NDA systématique, données traitées en France, zéro rétention sur vos environnements.</p></div></div>
+        <div class="why-item reveal"><div class="why-icon">📊</div><div><h4>Approche orientée risque</h4><p>Nous priorisons par impact métier, pas seulement par score technique.</p></div></div>
+        <div class="why-item reveal"><div class="why-icon">🌀</div><div><h4>Suivi post-mission</h4><p>3 mois de suivi inclus pour s'assurer de l'efficacité des mesures déployées.</p></div></div>
+      </div>
+    </div>
+    <div class="certs-panel">
+      <h3>Certifications & Référentiels</h3>
+      <p class="sub">Nos consultants sont certifiés et nos méthodes alignées sur les standards internationaux.</p>
+      <div class="certs-grid">
+        <div class="cert-item reveal"><div class="cert-name">OSCP / OSEP</div><div class="cert-desc">Offensive Security Certified Professional</div></div>
+        <div class="cert-item reveal"><div class="cert-name">CISSP</div><div class="cert-desc">Information Systems Security</div></div>
+        <div class="cert-item reveal"><div class="cert-name">ISO 27001</div><div class="cert-desc">Lead Auditor certifié</div></div>
+        <div class="cert-item reveal"><div class="cert-name">CEH / CPEH</div><div class="cert-desc">Certified Ethical Hacker</div></div>
+        <div class="cert-item reveal"><div class="cert-name">ANSSI PASSI</div><div class="cert-desc">Prestataire d'Audit SSI</div></div>
+        <div class="cert-item reveal"><div class="cert-name">NIS2 / RGPD</div><div class="cert-desc">Conformité réglementaire</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-dots">
+  <div class="contact-layout">
+    <div>
+      <div class="eyebrow">Nous contacter</div>
+      <h2>Démarrons votre audit</h2>
+      <p style="font-size:.95rem;color:var(--slate);font-weight:300;line-height:1.8;margin-bottom:2rem;">Un consultant Mistral IT vous recontacte sous 24h pour qualifier votre besoin et vous proposer une approche sur-mesure.</p>
+      <div class="contact-details">
+        <div class="contact-detail"><div class="contact-detail-icon">✉️</div><a href="mailto:contact@mistral-it.fr">contact@mistral-it.fr</a></div>
+        <div class="contact-detail"><div class="contact-detail-icon">📞</div><a href="tel:+33123456789">+33 1 23 45 67 89</a></div>
+        <div class="contact-detail"><div class="contact-detail-icon">📍</div><span>Lyon · Paris · Bordeaux</span></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Demande de devis</div>
+      <div class="form-sub">Réponse garantie sous 24h ouvrées</div>
+      <div class="form-row">
+        <div class="form-group"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"/></div>
+        <div class="form-group"><label>Société</label><input type="text" placeholder="Acme Corp"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email professionnel</label><input type="email" placeholder="jean@acme.com"/></div>
+        <div class="form-group"><label>Type de prestation</label>
+          <select>
+            <option value="">Sélectionner…</option>
+            <option>Audit sécurité applicative</option>
+            <option>Audit infrastructure réseau</option>
+            <option>Audit Cloud</option>
+            <option>Audit conformité RGPD/NIS2</option>
+            <option>Audit Active Directory</option>
+            <option>Mise en œuvre de solutions</option>
+            <option>Formation & sensibilisation</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Contexte & périmètre</label><textarea placeholder="Décrivez votre environnement, vos enjeux et contraintes…"></textarea></div>
+      <button class="form-submit" onclick="this.textContent='✓ Message envoyé !';this.style.background='#059669';">Envoyer la demande →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><div class="footer-logo">Mistral IT</div><div class="footer-copy">© 2024 Mistral IT SAS — Tous droits réservés</div></div>
+  <div class="footer-links">
+    <a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">CGV</a>
+    <a href="mailto:contact@mistral-it.fr">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Services
+  const SERVICES = [
+    { icon:'🔧', title:'Remediation & Hardening', desc:"Suite à l'audit, nous prenons en charge la correction des vulnérabilités identifiées. Nos ingénieurs appliquent les patchs de sécurité, durcissent les configurations (CIS Benchmarks, ANSSI) et vérifient chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.", deliverables:['Plan de remédiation priorisé (CVSS)','Application des correctifs système','Durcissement configuration (CIS/ANSSI)','Re-test de validation post-correction','Rapport de clôture signé'] },
+    { icon:'🏗️', title:'Architecture Sécurisée', desc:"Conception d'une architecture Zero Trust adaptée à votre organisation. Mise en place de micro-segmentation réseau, DMZ, contrôles d'accès granulaires et identité forte (MFA, PAM). Déploiement accompagné et transfert de compétences inclus.", deliverables:["Schéma d'architecture cible","Déploiement Zero Trust / DMZ","Configuration MFA & PAM","Micro-segmentation réseau","Documentation technique complète"] },
+    { icon:'📡', title:'SOC & Supervision', desc:"Déploiement d'un Security Operations Center adapté à votre taille. Intégration SIEM, création de règles de détection sur-mesure, playbooks d'incident et supervision continue par nos analystes certifiés.", deliverables:['Déploiement SIEM / SOAR','Règles de détection personnalisées','Playbooks réponse incidents','Tableaux de bord temps réel','Supervision 24/7 (option)'] },
+    { icon:'🎓', title:'Formation & Transfert', desc:"Formations techniques sur la sécurité offensive et défensive pour vos équipes IT, et sessions de sensibilisation pour tous vos collaborateurs. Simulations de phishing et ateliers pratiques.", deliverables:['Formation sécurité (équipes IT)','Sensibilisation collaborateurs','Campagnes phishing simulées','E-learning sur-mesure','Attestations de formation'] },
+    { icon:'🔄', title:'Plan de Continuité', desc:"Élaboration complète de votre Plan de Continuité d'Activité et Plan de Reprise après Sinistre. Analyse d'impact (BIA), définition des RPO/RTO, tests réguliers et révision annuelle.", deliverables:["Analyse d'impact (BIA)","Rédaction PCA / PRA","Définition RPO & RTO","Tests de bascule et exercices","Révision et mise à jour annuelle"] },
+  ];
+  function selectService(idx, btn) {
+    document.querySelectorAll('.service-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const s = SERVICES[idx];
+    document.getElementById('spIcon').textContent  = s.icon;
+    document.getElementById('spTitle').textContent = s.title;
+    document.getElementById('spDesc').textContent  = s.desc;
+    document.getElementById('spDeliverables').innerHTML = s.deliverables.map(d => `<div class="deliverable">${d}</div>`).join('');
+  }
+</script>
+</body>
+</html>

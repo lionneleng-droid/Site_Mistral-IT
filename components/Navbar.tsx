@@ -54,9 +54,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/Logo-entier.png" // Assurez-vous que le fichier logo.png est dans public/images/
+            src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
-            width={100}
+            width={150}
             height={150}
             className="object-contain"
           />

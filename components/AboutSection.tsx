@@ -10,7 +10,7 @@ export default function AboutSection() {
             <Image
               src="/images/ENG-Lionnel.jpg" // Remplacez par le chemin de votre photo
               alt="Lionnel ENG"
-              width={300}
+              width={500}
               height={400}
               className="rounded-full object-cover"
             />

@@ -60,7 +60,7 @@ export const SERVICES: Service[] = [
     title: "Remediation & Hardening",
     shortDesc: "Correction et durcissement des systèmes",
     fullDesc:
-      "Suite à l'audit, nous prenons en charge la correction des vulnérabilités identifiées. Nos ingénieurs appliquent les patchs de sécurité, durcissent les configurations (CIS Benchmarks, ANSSI) et vérifient chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.",
+      "Suite à l'audit, je prends en charge la correction des vulnérabilités identifiées. J'applique les patchs de sécurité, durcis les configurations (CIS Benchmarks, ANSSI) et vérifie chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.",
     deliverables: [
       "Plan de remédiation priorisé (CVSS)",
       "Application des correctifs système",
@@ -88,27 +88,13 @@ export const SERVICES: Service[] = [
     title: "SOC & Supervision",
     shortDesc: "SIEM, détection et réponse aux incidents",
     fullDesc:
-      "Déploiement d'un Security Operations Center adapté à votre taille. Intégration SIEM, création de règles de détection sur-mesure, playbooks d'incident et supervision continue par nos analystes certifiés.",
+      "Déploiement d'un Security Operations Center adapté à votre taille. Intégration SIEM, création de règles de détection sur-mesure, playbooks d'incident et supervision continue par mes analystes certifiés.",
     deliverables: [
       "Déploiement SIEM / SOAR",
       "Règles de détection personnalisées",
       "Playbooks réponse incidents",
       "Tableaux de bord temps réel",
       "Supervision 24/7 (option)",
-    ],
-  },
-  {
-    icon: "🎓",
-    title: "Formation & Transfert",
-    shortDesc: "Montée en compétences de vos équipes",
-    fullDesc:
-      "Formations techniques sur la sécurité offensive et défensive pour vos équipes IT, et sessions de sensibilisation pour tous vos collaborateurs. Simulations de phishing et ateliers pratiques.",
-    deliverables: [
-      "Formation sécurité (équipes IT)",
-      "Sensibilisation collaborateurs",
-      "Campagnes phishing simulées",
-      "E-learning sur-mesure",
-      "Attestations de formation",
     ],
   },
   {
@@ -165,7 +151,7 @@ export const WHY_ITEMS = [
     icon: "⚡",
     title: "Réactivité garantie",
     description:
-      "Rapport préliminaire sous 48h, interlocuteur dédié tout au long de la mission.",
+      "Rapport préliminaire sous 72h, interlocuteur unique tout au long de la mission.",
   },
   {
     icon: "🔒",
@@ -177,7 +163,7 @@ export const WHY_ITEMS = [
     icon: "📊",
     title: "Approche orientée risque",
     description:
-      "Nous priorisons par impact métier, pas seulement par score technique.",
+      "Je priorise par impact métier, pas seulement par score technique.",
   },
   {
     icon: "🌀",
@@ -188,24 +174,22 @@ export const WHY_ITEMS = [
 ] as const;
 
 export const STATS = [
-  { value: "200+", label: "Audits réalisés" },
+  { value: "20+", label: "Audits réalisés" },
   { value: "98%", label: "Satisfaction client" },
-  { value: "12 ans", label: "d'expertise terrain" },
+  { value: "6 ans", label: "d'expertise terrain" },
 ] as const;
 
 export const AUDIT_PROGRESS = [
   { label: "Analyse infrastructure", pct: 100 },
   { label: "Tests réseau", pct: 87 },
-  { label: "Audit serveurs", pct: 64 },
+  { label: "Audit serveurs", pct: 100 },
   { label: "Conformité réglementaire", pct: 41 },
 ] as const;
 
 export const SELECT_OPTIONS = [
   "Audit infrastructure",
   "Audit réseau et sécurité",
-  "Audit serveurs et OS",
-  "Audit infrastructure cloud",
+  "Audit serveurs et poste de travail",
   "Audit continuité de service",
-  "Remediation et hardening",
-  "Formation & sensibilisation",
+  "Demande de renseignements",
 ] as const;

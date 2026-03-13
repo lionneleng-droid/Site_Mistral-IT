@@ -11,7 +11,7 @@ export default function CybersecurityContextSection() {
             Les tendances actuelles incluent l'adoption du zero-trust, la protection des données personnelles via des réglementations comme le RGPD, et la lutte contre les cyberattaques sophistiquées utilisant l'intelligence artificielle.
           </p>
           <p className="text-lg">
-            Chez Mistral-IT, nous vous aidons à rester en avance en intégrant des stratégies proactives et des technologies de pointe pour sécuriser votre avenir numérique.
+            Chez Mistral-IT, je vous aide à rester en avance en intégrant des stratégies proactives et des technologies de pointe pour sécuriser votre avenir numérique.
           </p>
         </div>
       </div>

@@ -40,6 +40,10 @@ export default function Navbar() {
     ? "bg-white text-ink hover:bg-gray-100"
     : "bg-ink text-white hover:bg-sky";
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -52,7 +56,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <div onClick={scrollToTop} className="flex items-center gap-2 cursor-pointer">
           <Image
             src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
@@ -64,7 +68,7 @@ export default function Navbar() {
             Mistral IT
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-sky mb-0.5 flex-shrink-0" />
-        </Link>
+        </div>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">

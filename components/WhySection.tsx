@@ -41,7 +41,7 @@ export default function WhySection() {
                   <h4 className="font-semibold text-ink text-[0.95rem] mb-0.5">
                     {item.title}
                   </h4>
-                  <p className="text-muted text-sm font-light leading-relaxed">
+                  <p className="text-slate text-sm font-light leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -55,15 +55,15 @@ export default function WhySection() {
           <h3 className="font-playfair font-bold text-ink text-xl mb-1">
             Expertise Éprouvée
           </h3>
-          <p className="text-muted text-sm font-light mb-2">
+          <p className="text-slate text-sm font-light mb-2">
             6 ans d'expérience terrain
           </p>
           <div className="bg-white rounded-xl p-4 mb-7 border border-[#e4e8ef]">
             <p className="text-sky font-bold text-lg">Administrateur Systèmes, réseaux & DevOps</p>
-            <p className="text-muted text-sm font-light">Des projets en infrastructure, réseaux et cloud</p>
+            <p className="text-slate text-sm font-light">Des projets en infrastructure, réseaux et cloud</p>
           </div>
 
-          <h4 className="font-semibold text-ink text-sm uppercase tracking-wide mb-4 text-muted">
+          <h4 className="font-semibold text-ink text-sm uppercase tracking-wide mb-4 text-slate">
             Projets Réalisés
           </h4>
           <div className="grid grid-cols-2 gap-3">
@@ -76,7 +76,7 @@ export default function WhySection() {
                 <p className="font-semibold text-ink text-xs mb-1">
                   {project.title}
                 </p>
-                <p className="text-muted text-xs font-light">
+                <p className="text-slate text-xs font-light">
                   {project.desc}
                 </p>
               </div>

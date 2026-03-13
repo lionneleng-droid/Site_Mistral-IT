@@ -8,7 +8,7 @@ export default function AboutSection() {
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
           <div className="flex-shrink-0">
             <Image
-              src="/images/ENG Lionnel.png" // Remplacez par le chemin de votre photo
+              src="/images/ENG-Lionnel.png" // Remplacez par le chemin de votre photo
               alt="Lionnel ENG"
               width={300}
               height={300}

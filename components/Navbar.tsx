@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
@@ -51,7 +52,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-baseline gap-1.5">
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/Logo-entier.png" // Assurez-vous que le fichier logo.png est dans public/images/
+            alt="Mistral IT"
+            width={40}
+            height={60}
+            className="object-contain"
+          />
           <span className={`font-playfair font-bold text-[1.3rem] ${logoColor} tracking-tight`}>
             Mistral IT
           </span>

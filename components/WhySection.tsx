@@ -24,7 +24,7 @@ export default function WhySection() {
             construit dans les détails
           </h2>
           <p className="text-slate font-light text-[1rem] leading-relaxed max-w-md mb-10">
-            Nos consultants apportent une expertise terrain sur des
+            J'apporte une expertise terrain sur des
             environnements critiques, avec une approche orientée résultat.
           </p>
 

@@ -38,6 +38,7 @@ export type Service = {
   shortDesc: string;
   fullDesc: string;
   deliverables: string[];
+  image: string; // Nouveau champ pour l'image de fond
 };
 
 export const SERVICES: Service[] = [
@@ -52,9 +53,9 @@ export const SERVICES: Service[] = [
       "Application des correctifs système",
       "Durcissement configuration (CIS/ANSSI)",
       "Re-test de validation post-correction",
-      "Plan de mise à jour de vos serveurs et poste de travail",
       "Rapport de clôture signé",
     ],
+    image: "/images/remediation.png", // Image pour cette prestation
   },
   {
     icon: "🏗️",
@@ -69,6 +70,7 @@ export const SERVICES: Service[] = [
       "Micro-segmentation réseau",
       "Documentation technique complète",
     ],
+    image: "/images/architecture.jpg", // Image pour cette prestation
   },
   {
     icon: "📡",
@@ -83,6 +85,7 @@ export const SERVICES: Service[] = [
       "Tableaux de bord temps réel",
       "Supervision 24/7 (option)",
     ],
+    image: "/images/soc.jpg", // Image pour cette prestation
   },
   {
     icon: "🔄",
@@ -97,6 +100,7 @@ export const SERVICES: Service[] = [
       "Tests de bascule et exercices",
       "Révision et mise à jour annuelle",
     ],
+    image: "/images/continuite.png", // Image pour cette prestation
   },
 ];
 

@@ -1,6 +1,6 @@
 export default function CybersecurityContextSection() {
   return (
-    <section className="py-16 bg-white">
+    <section id="cybersecurity" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Contexte actuel de la cybersécurité</h2>
         <div className="max-w-4xl mx-auto">

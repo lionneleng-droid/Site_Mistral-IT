@@ -136,7 +136,7 @@ export const STEPS = [
     num: "04",
     title: "Rapport",
     description:
-      "Livraison d'un rapport détaillé avec synthèse executive et recommandations priorisées.",
+      "Livraison d'un rapport détaillé avec synthèse executive, schémas et recommandations priorisées.",
   },
   {
     num: "05",

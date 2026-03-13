@@ -7,6 +7,8 @@ const NAV_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#processus", label: "Processus" },
   { href: "#pourquoi", label: "Expertise" },
+  { href: "#about", label: "À propos" },
+  { href: "#cybersecurity", label: "Contexte Cybersécurité" },
 ];
 
 export default function Navbar() {

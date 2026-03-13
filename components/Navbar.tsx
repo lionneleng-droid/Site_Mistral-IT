@@ -56,8 +56,8 @@ export default function Navbar() {
           <Image
             src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             className="object-contain"
           />
           <span className={`font-playfair font-bold text-[1.3rem] ${logoColor} tracking-tight`}>

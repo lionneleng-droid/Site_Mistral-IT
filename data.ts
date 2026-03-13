@@ -30,20 +30,6 @@ export const AUDITS = [
       "Revue de votre environnement AWS, Azure ou GCP : conformité CIS Benchmarks, IAM, sécurité réseau et optimisation des coûts.",
     tags: ["AWS", "Azure", "GCP"],
   },
-  {
-    icon: "🎓",
-    title: "Sensibilisation & Bonnes Pratiques",
-    description:
-      "Programmes de sensibilisation à la cybersécurité pour tous les collaborateurs. Formations sur les bonnes pratiques, gestion des mots de passe, phishing et incident reporting.",
-    tags: ["Sensibilisation", "Formation", "Phishing", "Hygiène de sécurité"],
-  },
-  {
-    icon: "📚",
-    title: "Formation Cybersécurité Avancée",
-    description:
-      "Formations techniques approfondies pour vos équipes IT : sécurité défensive, audits, architecture sécurisée et gestion des incidents.",
-    tags: ["Défense", "Incident Response", "Architecture"],
-  },
 ] as const;
 
 export type Service = {
@@ -66,6 +52,7 @@ export const SERVICES: Service[] = [
       "Application des correctifs système",
       "Durcissement configuration (CIS/ANSSI)",
       "Re-test de validation post-correction",
+      "Plan de mise à jour de vos serveurs et poste de travail",
       "Rapport de clôture signé",
     ],
   },
@@ -88,11 +75,11 @@ export const SERVICES: Service[] = [
     title: "SOC & Supervision",
     shortDesc: "SIEM, détection et réponse aux incidents",
     fullDesc:
-      "Déploiement d'un Security Operations Center adapté à votre taille. Intégration SIEM, création de règles de détection sur-mesure, playbooks d'incident et supervision continue par mes analystes certifiés.",
+      "Déploiement d'un Security Operations Center adapté à votre taille. Intégration SIEM, création de règles de détection sur-mesure, remontées d'incidents et supervision continue.",
     deliverables: [
-      "Déploiement SIEM / SOAR",
       "Règles de détection personnalisées",
-      "Playbooks réponse incidents",
+      "Remontées d'incidents",
+      "Antivirus & EDR monitorés",
       "Tableaux de bord temps réel",
       "Supervision 24/7 (option)",
     ],

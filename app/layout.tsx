@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Mistral IT accompagne les entreprises dans l'audit de leurs systèmes et la mise en œuvre de solutions IT robustes. Confiance, clarté, expertise.",
   keywords: ["audit sécurité", "infrastructure IT", "pentest", "RGPD", "ISO 27001", "cybersécurité"],
   icons: {
-    icon: "/images/Icone.png",
+    icon: "/images/Logo-carre.png",
   },
 };
 

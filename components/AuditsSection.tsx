@@ -1,4 +1,5 @@
 import { AUDITS } from "../data";
+import AuditQuestionnaireModal from "./AuditQuestionnaireModal";
 
 export default function AuditsSection() {
   return (
@@ -12,12 +13,14 @@ export default function AuditsSection() {
         infrastructure IT
       </h2>
       <p className="text-slate font-light text-[1rem] leading-relaxed max-w-lg mb-14">
-        Infrastructure, réseaux et serveurs : nos experts analysent votre
-        architecture complète pour identifier les vulnérabilités, optimiser les
-        performances et assurer la conformité aux normes ISO 27001 et NIST.
+        Infrastructure, réseaux et serveurs : 
+        J'analyse votre architecture complète pour identifier 
+        les vulnérabilités, les corriger et optimiser les performances.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <AuditQuestionnaireModal />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
         {AUDITS.map((audit) => (
           <div
             key={audit.title}

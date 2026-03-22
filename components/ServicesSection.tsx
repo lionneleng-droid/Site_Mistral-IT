@@ -48,30 +48,40 @@ export default function ServicesSection() {
         </div>
 
         {/* Detail panel */}
-        <div className="bg-stone rounded-2xl p-10 lg:sticky lg:top-20">
-          <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[1.6rem] shadow-sm mb-5">
-            {current.icon}
-          </div>
-          <h3 className="font-playfair font-bold text-ink text-[1.5rem] mb-3 leading-snug">
-            {current.title}
-          </h3>
-          <p className="text-slate font-light text-sm leading-relaxed mb-7">
-            {current.fullDesc}
-          </p>
+        <div className="relative bg-stone rounded-2xl p-10 lg:sticky lg:top-20 overflow-hidden">
+          {/* Image de fond */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${current.image})` }}
+          />
+          {/* Overlay pour la lisibilité */}
+          <div className="absolute inset-0 bg-stone/85 rounded-2xl" />
+          {/* Contenu */}
+          <div className="relative z-10">
+            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[1.6rem] shadow-sm mb-5">
+              {current.icon}
+            </div>
+            <h3 className="font-playfair font-bold text-ink text-[1.5rem] mb-3 leading-snug">
+              {current.title}
+            </h3>
+            <p className="text-slate font-light text-sm leading-relaxed mb-7">
+              {current.fullDesc}
+            </p>
 
-          <p className="text-[0.7rem] font-bold text-muted tracking-widest uppercase mb-3">
-            Livrables inclus
-          </p>
-          <div className="flex flex-col">
-            {current.deliverables.map((d) => (
-              <div
-                key={d}
-                className="flex items-center gap-3 py-2.5 border-b border-[#e4e8ef] text-sm text-slate font-light last:border-0"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-sky flex-shrink-0" />
-                {d}
-              </div>
-            ))}
+            <p className="text-[0.7rem] font-bold text-muted tracking-widest uppercase mb-3">
+              Livrables inclus
+            </p>
+            <div className="flex flex-col">
+              {current.deliverables.map((d) => (
+                <div
+                  key={d}
+                  className="flex items-center gap-3 py-2.5 border-b border-[#e4e8ef] text-sm text-slate font-light last:border-0"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky flex-shrink-0" />
+                  {d}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

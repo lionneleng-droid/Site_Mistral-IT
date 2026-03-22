@@ -1,1 +1,10 @@
 node_modules
+.env.local
+.env.*.local
+data/audit-results.json
+.next/
+node_modules/
+logs/
+*.log
+*.tmp
+*.meta

@@ -107,7 +107,7 @@ export default function ContactSection() {
                     <input
                       name="company"
                       type="text"
-                      placeholder="Acme Corp"
+                      placeholder="Mistral Corp"
                       value={form.company}
                       onChange={handleChange}
                     />
@@ -119,7 +119,7 @@ export default function ContactSection() {
                     <input
                       name="email"
                       type="email"
-                      placeholder="jean@acme.com"
+                      placeholder="jean@mistral-it.fr"
                       value={form.email}
                       onChange={handleChange}
                       required

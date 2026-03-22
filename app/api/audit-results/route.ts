@@ -54,7 +54,7 @@ async function saveResults(results: AuditResult[]): Promise<void> {
 }
 
 // Envoyer l'email (simulation pour développement)
-async function sendEmail(to: string, subject: string, htmlContent: string) {
+async function Resend(to: string, subject: string, htmlContent: string) {
   // En production, vous pouvez utiliser Resend, SendGrid, Nodemailer, etc.
   // Pour le développement, on simule juste l'envoi
   console.log(`Email envoyé à: ${to}`);
@@ -178,7 +178,7 @@ export async function POST(request: NextRequest) {
               </ul>
               
               <p style="text-align: center; margin-top: 30px;">
-                <a href="https://www.mistral-it.fr#contact" style="background: #3b82f6; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                <a href="https://www.mistral-it.fr/#contact" style="background: #3b82f6; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">
                   Contacter un expert
                 </a>
               </p>
@@ -194,7 +194,7 @@ export async function POST(request: NextRequest) {
     `;
 
     // Envoyer l'email
-    await sendEmail(
+    await Resend(
       email,
       `Résultat de votre diagnostic - ${type_audit}`,
       emailContent

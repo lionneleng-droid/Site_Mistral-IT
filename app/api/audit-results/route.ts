@@ -54,11 +54,10 @@ async function saveResults(results: AuditResult[]): Promise<void> {
   await fs.writeFile(filePath, JSON.stringify(results, null, 2));
 }
 
-// Initialiser le client Resend
-const resend = new ResendClient(process.env.RESEND_API_KEY);
-
 // Envoyer l'email via Resend
 async function sendEmail(to: string, subject: string, htmlContent: string) {
+  // Initialisation à l'intérieur de la fonction pour éviter l'erreur au build
+  const resend = new ResendClient(process.env.RESEND_API_KEY);
   try {
     const result = await resend.emails.send({
       from: 'lionnel.eng@gmail.com', // Remplacez par votre adresse email vérifiée sur Resend

@@ -24,7 +24,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 async function sendEmail(to: string, subject: string, htmlContent: string) {
   try {
     const result = await resend.emails.send({
-      from: 'Mistral IT <audit@mistral-it.fr>',
+      from: 'Mistral IT <lionnel.eng@gmail.com>',
       to,
       subject,
       html: htmlContent,
@@ -63,7 +63,7 @@ async function sendEmail(to: string, subject: string, htmlContent: string) {
   try {
     await sgMail.send({
       to,
-      from: 'audit@mistral-it.fr',
+      from: 'lionnel.eng@gmail.com',
       subject,
       html: htmlContent,
     });
@@ -122,11 +122,10 @@ async function sendEmail(to: string, subject: string, htmlContent: string) {
 
 ```
 SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
+SMTP_PORT=25
 SMTP_SECURE=false
-SMTP_USER=votre_email@gmail.com
-SMTP_PASSWORD=votre_mot_de_passe
-SMTP_FROM=audit@mistral-it.fr
+SMTP_USER=lionnel.eng@gmail.com
+SMTP_FROM=lionnel.eng@gmail.com
 ```
 
 ## Stockage des données

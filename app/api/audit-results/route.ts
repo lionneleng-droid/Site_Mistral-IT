@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { Resend as ResendClient } from 'resend';
 
 interface AuditResult {
   nom: string;
@@ -53,13 +54,24 @@ async function saveResults(results: AuditResult[]): Promise<void> {
   await fs.writeFile(filePath, JSON.stringify(results, null, 2));
 }
 
-// Envoyer l'email (simulation pour développement)
-async function Resend(to: string, subject: string, htmlContent: string) {
-  // En production, vous pouvez utiliser Resend, SendGrid, Nodemailer, etc.
-  // Pour le développement, on simule juste l'envoi
-  console.log(`Email envoyé à: ${to}`);
-  console.log(`Sujet: ${subject}`);
-  return true;
+// Initialiser le client Resend
+const resend = new ResendClient(process.env.RESEND_API_KEY);
+
+// Envoyer l'email via Resend
+async function sendEmail(to: string, subject: string, htmlContent: string) {
+  try {
+    const result = await resend.emails.send({
+      from: 'lionnel.eng@gmail.com', // Remplacez par votre adresse email vérifiée sur Resend
+      to,
+      subject,
+      html: htmlContent,
+    });
+    console.log('Email envoyé avec succès via Resend:', result);
+    return result;
+  } catch (error) {
+    console.error('Erreur Resend:', error);
+    throw error;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -194,7 +206,7 @@ export async function POST(request: NextRequest) {
     `;
 
     // Envoyer l'email
-    await Resend(
+    await sendEmail(
       email,
       `Résultat de votre diagnostic - ${type_audit}`,
       emailContent

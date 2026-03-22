@@ -13,6 +13,7 @@ interface AuditScores {
 interface FormData {
   nom: string;
   prenom: string;
+  email: string;
   societe: string;
 }
 
@@ -22,6 +23,7 @@ export default function AuditQuestionnaireModal() {
   const [formData, setFormData] = useState<FormData>({
     nom: '',
     prenom: '',
+    email: '',
     societe: '',
   });
   const [scores, setScores] = useState<AuditScores>({
@@ -32,6 +34,9 @@ export default function AuditQuestionnaireModal() {
     autres: 0,
   });
   const [result, setResult] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const questions = [
     {
@@ -171,10 +176,55 @@ export default function AuditQuestionnaireModal() {
     setResult(primaryAudit ? primaryAudit.label : 'Audit Général');
   };
 
+  const sendResultEmail = async () => {
+    if (!formData.email) {
+      setError('Adresse email requise');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/audit-results', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nom: formData.nom,
+          prenom: formData.prenom,
+          email: formData.email,
+          societe: formData.societe,
+          type_audit: result,
+          scores: scores,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi');
+      }
+
+      const data = await response.json();
+      setEmailSent(true);
+    } catch (err) {
+      setError('Erreur lors de l\'envoi. Veuillez réessayer.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleNext = () => {
     if (currentStep === 0) {
-      if (!formData.nom || !formData.prenom || !formData.societe) {
+      if (!formData.nom || !formData.prenom || !formData.email || !formData.societe) {
         alert('Veuillez remplir tous les champs');
+        return;
+      }
+      // Valider l'email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        alert('Veuillez entrer une adresse email valide');
         return;
       }
       setCurrentStep(1);
@@ -183,9 +233,11 @@ export default function AuditQuestionnaireModal() {
 
   const handleReset = () => {
     setCurrentStep(0);
-    setFormData({ nom: '', prenom: '', societe: '' });
+    setFormData({ nom: '', prenom: '', email: '', societe: '' });
     setScores({ infra: 0, ad: 0, securite: 0, reseaux: 0, autres: 0 });
     setResult(null);
+    setEmailSent(false);
+    setError(null);
   };
 
   const renderAuditTypeColor = (auditType: string) => {
@@ -236,21 +288,38 @@ export default function AuditQuestionnaireModal() {
                   <span className="font-semibold">{formData.societe}</span>
                 </p>
 
-                <div className="bg-gradient-to-br from-sky to-blue-500 text-white rounded-lg p-8 mb-8">
-                  <p className="text-sm font-semibold mb-2 opacity-90">Audit recommandé:</p>
-                  <h3 
-                    className="text-3xl font-bold"
-                    style={{ color: renderAuditTypeColor(result) }}
-                  >
-                    {result}
-                  </h3>
-                </div>
+                {emailSent ? (
+                  <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6 mb-8">
+                    <p className="text-green-700 font-semibold text-lg">✓ Email envoyé avec succès!</p>
+                    <p className="text-green-600 text-sm mt-2">
+                      Les résultats ont été envoyés à <span className="font-semibold">{formData.email}</span>
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="bg-gradient-to-br from-sky to-blue-500 text-white rounded-lg p-8 mb-8">
+                      <p className="text-sm font-semibold mb-2 opacity-90">Audit recommandé:</p>
+                      <h3 
+                        className="text-3xl font-bold"
+                        style={{ color: renderAuditTypeColor(result) }}
+                      >
+                        {result}
+                      </h3>
+                    </div>
 
-                <p className="text-slate mb-8 text-justify">
-                  Basé sur vos réponses, nous avons identifié que votre entreprise bénéficierait d'un audit approfondi 
-                  sur cet aspect spécifique de votre infrastructure informatique. Notre équipe d'experts est prête à 
-                  vous accompagner pour évaluer votre situation actuelle et proposer des solutions adaptées.
-                </p>
+                    <p className="text-slate mb-8 text-justify">
+                      Basé sur vos réponses, nous avons identifié que votre entreprise bénéficierait d'un audit approfondi 
+                      sur cet aspect spécifique de votre infrastructure informatique. Notre équipe d'experts est prête à 
+                      vous accompagner pour évaluer votre situation actuelle et proposer des solutions adaptées.
+                    </p>
+
+                    {error && (
+                      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 mb-6">
+                        <p className="text-red-700 text-sm">{error}</p>
+                      </div>
+                    )}
+                  </>
+                )}
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
@@ -259,6 +328,24 @@ export default function AuditQuestionnaireModal() {
                   >
                     Recommencer
                   </button>
+
+                  {!emailSent && (
+                    <button
+                      onClick={sendResultEmail}
+                      disabled={isLoading}
+                      className="text-sm font-semibold px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {isLoading ? (
+                        <>
+                          <span className="animate-spin">⏳</span> Envoi...
+                        </>
+                      ) : (
+                        <>
+                          📧 Envoyer par email
+                        </>
+                      )}
+                    </button>
+                  )}
 
                   <a
                     href="#contact"
@@ -308,6 +395,21 @@ export default function AuditQuestionnaireModal() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-sky focus:outline-none"
                       placeholder="Votre prénom"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-ink mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-sky focus:outline-none"
+                      placeholder="votre.email@example.com"
                     />
                   </div>
 

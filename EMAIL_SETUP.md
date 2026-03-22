@@ -24,7 +24,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 async function sendEmail(to: string, subject: string, htmlContent: string) {
   try {
     const result = await resend.emails.send({
-      from: 'Mistral IT <lionnel.eng@gmail.com>',
+      from: 'Mistral IT <contact@mistral-it.fr>',
       to,
       subject,
       html: htmlContent,
@@ -63,7 +63,7 @@ async function sendEmail(to: string, subject: string, htmlContent: string) {
   try {
     await sgMail.send({
       to,
-      from: 'lionnel.eng@gmail.com',
+      from: 'contact@mistral-it.fr',
       subject,
       html: htmlContent,
     });

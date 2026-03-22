@@ -211,7 +211,7 @@ export default function AuditQuestionnaireModal() {
             onClick={() => setIsOpen(true)}
             className="text-sm font-semibold px-8 py-4 bg-gradient-to-r from-sky via-sky to-blue-500 text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Découvrir votre type d\'audit
+            Découvrir votre type d'audit
           </button>
         </div>
       )}

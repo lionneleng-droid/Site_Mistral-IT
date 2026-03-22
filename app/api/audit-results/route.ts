@@ -20,7 +20,7 @@ interface AuditResult {
 async function sendEmail(to: string, subject: string, htmlContent: string) {
   const resend = new ResendClient(process.env.RESEND_API_KEY);
   const result = await resend.emails.send({
-    from: 'contact@mistral-it.fr',
+    from: 'Mistral-IT <contact@mistral-it.fr>',
     to,
     subject,
     html: htmlContent,

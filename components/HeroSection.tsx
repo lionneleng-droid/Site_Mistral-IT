@@ -6,6 +6,36 @@ import { useState } from "react";
 
 const TABS = [
   {
+    id: "contexte",
+    label: "Contexte cybersécurité",
+    items: [
+      {
+        icon: "📈",
+        color: "bg-red-50",
+        title: "+38 % d'attaques en un an",
+        desc: "Les cyberattaques mondiales ont explosé en 2023. Les PME représentent désormais 43 % des cibles, souvent faute de protection adaptée.",
+      },
+      {
+        icon: "⏱️",
+        color: "bg-amber-50",
+        title: "197 jours d'intrusion non détectée",
+        desc: "C'est le délai moyen avant qu'une entreprise découvre une violation de son système — 197 jours pendant lesquels les données sont exposées.",
+      },
+      {
+        icon: "💶",
+        color: "bg-blue-50",
+        title: "4,5 M€ de coût moyen par incident",
+        desc: "Selon IBM, le coût moyen d'une violation de données en Europe atteint 4,5 millions d'euros en 2024, entre arrêt d'activité, amendes et réparations.",
+      },
+      {
+        icon: "⚖️",
+        color: "bg-emerald-50",
+        title: "NIS2 : nouvelles obligations dès 2024",
+        desc: "La directive européenne NIS2 élargit les obligations de sécurité à des milliers d'entreprises. Non-conformité = sanctions pouvant dépasser 10 M€.",
+      },
+    ],
+  },
+  {
     id: "pourquoi",
     label: "Pourquoi un audit ?",
     items: [

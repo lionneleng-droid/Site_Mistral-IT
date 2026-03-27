@@ -9,7 +9,6 @@ const NAV_LINKS = [
   { href: "#processus", label: "Processus" },
   { href: "#pourquoi", label: "Pourquoi Mistral IT" },
   { href: "#about", label: "À propos" },
-  { href: "#cybersecurity", label: "Contexte Cybersécurité" },
 ];
 
 export default function Navbar() {

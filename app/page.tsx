@@ -8,7 +8,6 @@ import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
 import AboutSection from '../components/AboutSection';
-import CybersecurityContextSection from '../components/CybersecurityContextSection';
 
 export default function Home() {
   return (
@@ -26,7 +25,6 @@ export default function Home() {
         <WhySection />
         <ContactSection />
         <AboutSection />
-        <CybersecurityContextSection />
       </main>
 
       <Footer />

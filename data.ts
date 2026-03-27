@@ -18,7 +18,7 @@ export const AUDITS = [
   },
   {
     icon: "💻",
-    title: "Audit Serveurs & OS",
+    title: "Audit Serveurs & Postes de travail",
     description:
       "Durcissement des serveurs (Windows/Linux), gestion des correctifs, configurations de sécurité et conformité CIS Benchmarks.",
     tags: ["Windows", "Linux", "Hardening"],
@@ -49,7 +49,7 @@ export const SERVICES: Service[] = [
     fullDesc:
       "Suite à l'audit, je prends en charge la correction des vulnérabilités identifiées. J'applique les patchs de sécurité, durcis les configurations (CIS Benchmarks, ANSSI) et vérifie chaque correction par re-test. Un rapport final atteste de la résolution de chaque point.",
     deliverables: [
-      "Plan de remédiation priorisé (CVSS)",
+      "Plan de remédiation priorisé",
       "Application des correctifs système",
       "Durcissement configuration (CIS/ANSSI)",
       "Re-test de validation post-correction",
@@ -88,15 +88,29 @@ export const SERVICES: Service[] = [
     image: "/images/soc.jpg", // Image pour cette prestation
   },
   {
+  icon: "💾",
+  title: "Sauvegarde & Restauration",
+  shortDesc: "Backup, restauration, résilience des données",
+  fullDesc:
+    "Audit et mise en place de stratégies de sauvegarde robustes selon la règle 3-2-1. Vérification de l'intégrité des sauvegardes, tests de restauration réguliers ou sur demande et protection contre le chiffrement par ransomware.",
+  deliverables: [
+    "Audit de l'existant et des gaps",
+    "Mise en œuvre de la règle 3-2-1 selon besoin",
+    "Tests de restauration documentés",
+    "Protection anti-ransomware (sauvegardes immuables)",
+    "Déploiement de solutions de sauvegarde adaptées",
+  ],
+  image: "/images/sauvegarde.png",
+  },
+  {
     icon: "🔄",
     title: "Plan de Continuité",
     shortDesc: "PCA, PRA, gestion de crise",
     fullDesc:
-      "Élaboration complète de votre Plan de Continuité d'Activité et Plan de Reprise après Sinistre. Analyse d'impact (BIA), définition des RPO/RTO, tests réguliers et révision annuelle.",
+      "Élaboration complète de votre Plan de Continuité d'Activité et Plan de Reprise après Sinistre. Analyse d'impact (BIA), tests réguliers et révision annuelle.",
     deliverables: [
-      "Analyse d'impact (BIA)",
+      "Analyse d'impact métier",
       "Rédaction PCA / PRA",
-      "Définition RPO & RTO",
       "Tests de bascule et exercices",
       "Révision et mise à jour annuelle",
     ],
@@ -167,7 +181,7 @@ export const WHY_ITEMS = [
 export const STATS = [
   { value: "40+", label: "Audits réalisés" },
   { value: "4H", label: "Temps moyen par audit" },
-  { value: "48H", label: "Délai moyen pour avoir un rendez-vous pour un audit" },
+  { value: "48H", label: "Délai moyen de réponse" },
   { value: "72H", label: "Délai moyen des retours d'audits" },
   { value: "6 ans", label: "d'expertise terrain" },
 ] as const;
@@ -183,6 +197,6 @@ export const SELECT_OPTIONS = [
   "Audit infrastructure",
   "Audit réseau et sécurité",
   "Audit serveurs et poste de travail",
-  "Audit continuité de service",
+  "Audit Personnalisé",
   "Demande de renseignements",
 ] as const;

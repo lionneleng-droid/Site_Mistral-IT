@@ -173,7 +173,7 @@ export default function AuditQuestionnaireModal() {
 
     const types = [
       { key: 'infra', label: 'Audit Infrastructure', score: finalScores.infra },
-      { key: 'ad', label: 'Audit Active Directory / Identité', score: finalScores.ad },
+      { key: 'ad', label: 'Audit Serveurs et Postes de travail', score: finalScores.ad },
       { key: 'securite', label: 'Audit Sécurité', score: finalScores.securite },
       { key: 'reseaux', label: 'Audit Réseaux', score: finalScores.reseaux },
       { key: 'autres', label: 'Audit Personnalisé', score: finalScores.autres },

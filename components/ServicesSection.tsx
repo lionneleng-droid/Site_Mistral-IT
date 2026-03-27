@@ -9,7 +9,7 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-28 px-6 lg:px-20 bg-white">
       <p className="text-xs font-semibold text-sky tracking-widest uppercase mb-3">
-        Nos prestations
+        Mes prestations
       </p>
       <h2 className="font-playfair font-bold text-ink text-3xl sm:text-[2.6rem] leading-tight tracking-tight mb-4">
         Remédiation &amp;
@@ -17,8 +17,9 @@ export default function ServicesSection() {
         mise en production
       </h2>
       <p className="text-slate font-light text-[1rem] leading-relaxed max-w-lg mb-14">
-        Au-delà de l'audit infrastructure, nous déployons les solutions pour corriger les
+        Au-delà des audits, je déploie les solutions pour corriger les
         vulnérabilités, sécuriser votre architecture réseau et renforcer durablement votre infrastructure IT.
+        Ou encore l'automatisation de vos processus pour gagner en efficacité et réduire les risques d'erreur humaine.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 items-start">

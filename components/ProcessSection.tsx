@@ -4,7 +4,7 @@ export default function ProcessSection() {
   return (
     <section id="processus" className="py-28 px-6 lg:px-20 bg-ink text-white">
       <p className="text-xs font-semibold text-blue-400 tracking-widest uppercase mb-3">
-        Notre méthode
+        Ma méthode
       </p>
       <h2 className="font-playfair font-bold text-white text-3xl sm:text-[2.6rem] leading-tight tracking-tight mb-4">
         Un processus structuré,
@@ -13,7 +13,7 @@ export default function ProcessSection() {
       </h2>
       <p className="text-white/50 font-light text-[1rem] leading-relaxed max-w-lg mb-16">
         De la qualification initiale au déploiement des solutions, chaque étape
-        est documentée et partagée avec vous en temps réel.
+        est documentée et partagée avec vous.
       </p>
 
       {/* Steps */}

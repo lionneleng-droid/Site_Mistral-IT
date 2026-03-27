@@ -4,10 +4,10 @@
 export const AUDITS = [
   {
     icon: "🏗️",
-    title: "Audit Infrastructure",
+    title: "Audit Infrastructure OnPrem & Cloud",
     description:
-      "Analyse complète de votre infrastructure : virtualisation, stockage, datacenters et architectures hybrides. Identification des points de défaillance et optimisation des performances.",
-    tags: ["Virtualisation", "Stockage", "Datacenters"],
+      "Analyse complète de votre infrastructure : virtualisation, stockage, datacenters et architectures hybrides. Identification des points de défaillance et optimisation des performances. Revue de votre environnement AWS et/ou GCP",
+    tags: ["Virtualisation", "Stockage", "Datacenters", "AWS", "GCP"],
   },
   {
     icon: "🌐",
@@ -24,11 +24,11 @@ export const AUDITS = [
     tags: ["Windows", "Linux", "Hardening"],
   },
   {
-    icon: "☁️",
-    title: "Audit Infrastructure Cloud",
+    icon: "🎯",
+    title: "Audit Personnalisé",
     description:
-      "Revue de votre environnement AWS, Azure ou GCP : conformité CIS Benchmarks, IAM, sécurité réseau et optimisation des coûts.",
-    tags: ["AWS", "Azure", "GCP"],
+      "Vous avez un besoin spécifique non couvert par nos audits standards ? Nous construisons une mission sur mesure : périmètre ciblé, méthodologie adaptée et livrables ajustés à votre contexte métier.",
+    tags: ["Sur mesure", "Périmètre ciblé", "Multi-domaines", "Flexible"],
   },
 ] as const;
 

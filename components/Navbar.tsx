@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { href: "#audits", label: "Audits" },
-  { href: "#services", label: "Services" },
-  { href: "#processus", label: "Processus" },
-  { href: "#pourquoi", label: "Pourquoi Mistral IT" },
+  { href: "#services", label: "Prestations" },
+  { href: "#processus", label: "Notre Méthode" },
+  { href: "#pourquoi", label: "Pourquoi moi ?" },
   { href: "#about", label: "À propos" },
 ];
 

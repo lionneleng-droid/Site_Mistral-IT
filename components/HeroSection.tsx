@@ -42,7 +42,7 @@ const TABS = [
       {
         icon: "🏢",
         color: "bg-blue-50",
-        title: "PME et ETI",
+        title: "TPE et PME",
         desc: "Souvent les plus exposées car elles gèrent des données sensibles sans équipe dédiée à la cybersécurité.",
       },
       {
@@ -109,7 +109,7 @@ const TABS = [
         icon: "🛠️",
         color: "bg-emerald-50",
         title: "Plan de remédiation accompagné",
-        desc: "Nos experts restent disponibles pour guider l'implémentation des corrections identifiées, sans vous laisser seul face au rapport.",
+        desc: "Notre expert reste disponible pour guider l'implémentation des corrections identifiées, sans vous laisser seul face au rapport.",
       },
       {
         icon: "📅",

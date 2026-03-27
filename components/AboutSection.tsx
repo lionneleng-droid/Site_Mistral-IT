@@ -17,13 +17,13 @@ export default function AboutSection() {
           </div>
           <div className="text-center md:text-left">
             <p className="text-lg mb-4">
-              Je suis Lionnel ENG, fondateur et expert en informatique chez Mistral-IT. Avec plus de 6 années d'expérience dans le domaine, je me consacre à protéger les entreprises contre les menaces numériques.
+              Je suis Lionnel ENG, fondateur et expert en informatique chez Mistral-IT. Avec plus de 6 années d'expérience dans le domaine, je me consacre à protéger les entreprises contre les menaces numériques et à aider les entreprises à faire évoluer leur environnement informatique.
             </p>
             <p className="text-lg mb-4">
               Mistral-IT est une entreprise spécialisée en solutions informatiques, offrant des services de consultation, d'audit et de remédiation pour aider mes clients à naviguer dans un monde numérique de plus en plus complexe.
             </p>
             <p className="text-lg">
-              Ma mission : rendre l'informatique accessible et efficace pour tous, en combinant expertise technique et approche personnalisée.
+              Ma mission : rendre l'informatique accessible et efficace pour tous, en combinant expertise technique et approches personnalisées.
             </p>
           </div>
         </div>

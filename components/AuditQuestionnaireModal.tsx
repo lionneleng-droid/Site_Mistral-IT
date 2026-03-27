@@ -46,6 +46,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Oui, régulièrement', scores: { infra: 3, autres: 1 } },
         { text: 'Occasionnellement', scores: { infra: 2, reseaux: 1 } },
         { text: 'Non, tout fonctionne bien', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 2 } },
       ],
     },
     {
@@ -55,6 +56,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Via Active Directory (AD)', scores: { ad: 3, securite: 1 } },
         { text: 'Solution cloud (Azure AD, Okta)', scores: { ad: 2, securite: 2 } },
         { text: 'Solutions propriétaires ou locales', scores: { autres: 2, ad: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 2 } },
       ],
     },
     {
@@ -73,6 +75,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Obsolète ou problématique', scores: { reseaux: 3, infra: 2 } },
         { text: 'Ancienne mais fonctionnelle', scores: { reseaux: 2, infra: 1 } },
         { text: 'Moderne et bien maintenue', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 2 } },
       ],
     },
     {
@@ -82,6 +85,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Non, c\'est un besoin urgent', scores: { infra: 3, securite: 2 } },
         { text: 'Oui, mais insuffisante', scores: { infra: 2, securite: 1 } },
         { text: 'Oui, robuste et testée', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 2 } },
       ],
     },
     {
@@ -91,6 +95,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Oui, plusieurs', scores: { securite: 3, reseaux: 1, ad: 1 } },
         { text: 'Oui, un incident', scores: { securite: 2, reseaux: 1 } },
         { text: 'Non, aucun', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 3 } },
       ],
     },
     {
@@ -100,6 +105,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Non compliant, amélioration urgente', scores: { securite: 3, infra: 1 } },
         { text: 'Partiellement compliant', scores: { securite: 2, autres: 1 } },
         { text: 'Entièrement compliant', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { autres: 2 } },
       ],
     },
     {
@@ -118,6 +124,7 @@ export default function AuditQuestionnaireModal() {
         { text: 'Oui, urgence absolue', scores: { ad: 3, securite: 2 } },
         { text: 'Oui, amélioration nécessaire', scores: { ad: 2, securite: 1 } },
         { text: 'Non, bien géré', scores: { autres: 1 } },
+        { text: 'Je ne sais pas', scores: { ad: 3, autres: 2 } },
       ],
     },
     {
@@ -169,7 +176,7 @@ export default function AuditQuestionnaireModal() {
       { key: 'ad', label: 'Audit Active Directory / Identité', score: finalScores.ad },
       { key: 'securite', label: 'Audit Sécurité', score: finalScores.securite },
       { key: 'reseaux', label: 'Audit Réseaux', score: finalScores.reseaux },
-      { key: 'autres', label: 'Audit Complémentaire', score: finalScores.autres },
+      { key: 'autres', label: 'Audit Personnalisé', score: finalScores.autres },
     ];
 
     const primaryAudit = types.find(t => t.score === maxScore);

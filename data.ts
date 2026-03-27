@@ -27,7 +27,7 @@ export const AUDITS = [
     icon: "🎯",
     title: "Audit Personnalisé",
     description:
-      "Vous avez un besoin spécifique non couvert par nos audits standards ? Nous construisons une mission sur mesure : périmètre ciblé, méthodologie adaptée et livrables ajustés à votre contexte métier.",
+      "Vous avez un besoin spécifique non couvert par nos audits standards ? Je construis une mission sur mesure : périmètre ciblé, méthodologie adaptée et livrables ajustés à votre contexte métier.",
     tags: ["Sur mesure", "Périmètre ciblé", "Multi-domaines", "Flexible"],
   },
 ] as const;

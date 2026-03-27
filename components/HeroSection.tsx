@@ -1,3 +1,5 @@
+"use client";
+
 import { STATS } from "../data";
 import CyberBackground from "../components/CyberBackground";
 import { useState } from "react";

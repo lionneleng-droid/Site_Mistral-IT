@@ -202,7 +202,7 @@ export default function HeroSection() {
             Parler à un expert
           </a>
         </div>
-        <div className="fade-up delay-5 flex gap-8 pt-7 border-t border-[#e4e8ef]">
+        <div className="fade-up delay-5 flex flex-wrap gap-x-6 gap-y-5 pt-7 border-t border-[#e4e8ef]">
           {STATS.map(({ value, label }) => (
             <div key={label}>
               <p className="font-playfair font-bold text-[2rem] text-ink leading-none mb-1">

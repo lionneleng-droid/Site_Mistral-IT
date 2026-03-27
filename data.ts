@@ -165,8 +165,10 @@ export const WHY_ITEMS = [
 ] as const;
 
 export const STATS = [
-  { value: "20+", label: "Audits réalisés" },
-  { value: "98%", label: "Satisfaction client" },
+  { value: "40+", label: "Audits réalisés" },
+  { value: "4H", label: "Temps moyen par audit" },
+  { value: "48H", label: "Délai moyen pour avoir un rendez-vous pour un audit" },
+  { value: "72H", label: "Délai moyen des retours d'audits" },
   { value: "6 ans", label: "d'expertise terrain" },
 ] as const;
 

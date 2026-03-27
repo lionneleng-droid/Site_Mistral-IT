@@ -158,7 +158,7 @@ const TABS = [
 ];
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState("pourquoi");
+  const [activeTab, setActiveTab] = useState("contexte");
   const current = TABS.find((t) => t.id === activeTab)!;
 
   return (

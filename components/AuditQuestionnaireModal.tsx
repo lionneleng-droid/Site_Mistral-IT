@@ -315,7 +315,7 @@ export default function AuditQuestionnaireModal() {
                     </div>
 
                     <p className="text-slate mb-8 text-justify">
-                      Basé sur vos réponses, nous avons identifié que votre entreprise bénéficierait d'un audit approfondi 
+                      Basé sur vos réponses, j'ai identifié que votre entreprise bénéficierait d'un audit approfondi 
                       sur cet aspect spécifique de votre infrastructure informatique. Notre équipe d'experts est prête à 
                       vous accompagner pour évaluer votre situation actuelle et proposer des solutions adaptées.
                     </p>

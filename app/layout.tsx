@@ -19,10 +19,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Mistral IT — Audits Sécurité & Infrastructure",
+  title: "Mistral IT — Audits Sécurité & Infrastructure - Vaucluse",
   description:
     "Mistral IT accompagne les entreprises dans l'audit de leurs systèmes et la mise en œuvre de solutions IT robustes. Confiance, clarté, expertise.",
-  keywords: ["audit sécurité", "infrastructure IT", "pentest", "RGPD", "ISO 27001", "cybersécurité"],
+  keywords: ["audit sécurité", "infrastructure IT", "pentest", "RGPD", "ISO 27001", "cybersécurité", "vulnérabilités", "Vaucluse", "Provence"],
   icons: {
     icon: "/images/Logo-carre.png",
   },

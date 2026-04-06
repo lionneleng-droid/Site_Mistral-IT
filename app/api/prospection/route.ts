@@ -105,8 +105,9 @@ function buildEmailContent(
       subject: `Sécurité informatique de ${societe} — Mistral IT`,
       html: base(`
         <p style="margin:0 0 16px;">Bonjour ${prenom},</p>
+        <p style="margin:0 0 16px;">Je me présente, Lionnel ENG, je dirige Mistral IT et j'accompagne des TPE/PME dans la sécurisation et l'évolution de leur informatique.</p>
         <p style="margin:0 0 16px;">Je me permets de vous contacter au sujet de la sécurité informatique de <strong>${societe}</strong>.</p>
-        <p style="margin:0 0 16px;">Je suis consultant IT indépendant basé en Vaucluse. Chez <strong>Mistral IT</strong>, j'accompagne les entreprises dans l'audit, la sécurisation et l'évolution de leurs systèmes d'information : infrastructure, réseau, Active Directory, postes de travail.</p>
+        <p style="margin:0 0 16px;">Je suis consultant IT indépendant basé dans le Vaucluse. Chez <strong>Mistral IT</strong>, j'accompagne les entreprises dans l'audit, la sécurisation et l'évolution de leurs systèmes d'information : infrastructure, réseau, serveurs et postes de travail.</p>
         ${highlight('<strong>Pourquoi un audit ?</strong><br>43&nbsp;% des cyberattaques ciblent aujourd\'hui les PME. Un audit permet d\'identifier les vulnérabilités avant qu\'elles deviennent des incidents coûteux — et de répondre aux obligations réglementaires (NIS2, RGPD).')}
         <p style="margin:0 0 16px;">Je propose un <strong>premier échange gratuit de 30 minutes</strong> pour comprendre votre contexte et vous donner un avis technique sans engagement.</p>
         <p style="margin:0 0 16px;">Seriez-vous disponible cette semaine ou la semaine prochaine pour un appel ?</p>

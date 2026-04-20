@@ -70,6 +70,21 @@ export default function OffresSection() {
         depuis zéro, Mistral IT intervient avec une méthode structurée et des livrables concrets.
       </p>
 
+      <div className="flex flex-wrap gap-4 mb-10">
+        <Link
+          href="/audits"
+          className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-lg bg-ink text-white hover:bg-sky transition-colors"
+        >
+          Voir nos offres d’audits →
+        </Link>
+        <Link
+          href="/accompagnement-si"
+          className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-lg border border-[#cdd7e6] bg-white text-ink hover:bg-skylt transition-colors"
+        >
+          Voir les accompagnements possibles →
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {OFFRES.map((offre) => (
           <article

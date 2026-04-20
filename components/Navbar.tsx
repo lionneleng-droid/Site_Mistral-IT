@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { href: "/", label: "Accueil" },
   { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
   { href: "/a-propos", label: "À propos" },
 ];
@@ -52,7 +51,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 cursor-pointer">
+        <a href="/" className="flex items-center gap-2 cursor-pointer">
           <Image
             src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
@@ -64,7 +63,7 @@ export default function Navbar() {
             Mistral IT
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-sky mb-0.5 flex-shrink-0" />
-        </Link>
+        </a>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
@@ -82,6 +81,9 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
+          <a href="/" className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}>
+            Accueil
+          </a>
           <Link
             href="/audits"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
@@ -117,6 +119,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
+          <a href="/" onClick={() => setMenuOpen(false)} className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}>
+            Accueil
+          </a>
           <Link
             href="/audits"
             onClick={() => setMenuOpen(false)}

@@ -41,6 +41,9 @@ export default function AccompagnementSIPage() {
 
           <div className="relative max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-20 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
             <div>
+              <p className="inline-flex items-center rounded-full border border-sky/30 bg-skylt px-3 py-1 text-xs font-semibold tracking-wide text-sky uppercase">
+                Accompagnement IT
+              </p>                
               <h1 className="mt-5 text-3xl lg:text-5xl font-bold leading-tight text-ink">
                 Architecture IT et construction de système d'information
               </h1>

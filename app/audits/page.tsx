@@ -8,7 +8,7 @@ const audits = [
     title: "Pre-audit Express",
     subtitle: "30 minutes pour faire le point",
     points: [
-      "Score securite / maturite IT",
+      "Score sécurité / maturité IT",
       "3 failles principales",
       "3 actions prioritaires",
     ],
@@ -17,22 +17,22 @@ const audits = [
     title: "Pack Audit Essentiel",
     subtitle: "Vision rapide et actionnable",
     points: [
-      "Scan reseau rapide",
-      "Verification securite basique",
-      "Analyse AD simplifiee (si existant)",
+      "Scan réseau rapide",
+      "Vérification sécurité basique",
+      "Analyse AD simplifiée (si existant)",
       "Check sauvegardes",
       "Rapport PDF clair (non technique)",
     ],
   },
   {
     title: "Pack Audit Avance",
-    subtitle: "Analyse technique complete",
+    subtitle: "Analyse technique complète",
     points: [
-      "Scan reseau complet (Nmap + vulnerabilites)",
-      "Audit Active Directory (droits, GPO, comptes a risque)",
+      "Scan réseau complet (Nmap + vulnérabilités)",
+      "Audit Active Directory (droits, GPO, comptes à risque)",
       "Analyse VLAN / segmentation",
       "Test exposition externe",
-      "Rapport detaille + plan d'action",
+      "Rapport détaillé + plan d'action",
     ],
   },
 ];
@@ -49,14 +49,14 @@ export default function AuditsPage() {
           <div className="relative max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-20 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
             <div>
               <p className="inline-flex items-center rounded-full border border-sky/30 bg-skylt px-3 py-1 text-xs font-semibold tracking-wide text-sky uppercase">
-                Audits IT
+                Audits
               </p>
               <h1 className="mt-5 text-3xl lg:text-5xl font-bold leading-tight text-ink">
-                Evaluer, prioriser et securiser votre environnement
+                Évaluer, prioriser et sécuriser votre environnement
               </h1>
               <p className="mt-5 max-w-2xl text-base lg:text-lg text-slate leading-relaxed">
-                Nous auditons votre infrastructure pour identifier les risques reels,
-                definir les priorites et fournir un plan d'action concret adapte a votre contexte.
+                Nous auditons votre infrastructure pour identifier les risques réels,
+                définir les priorités et fournir un plan d'action concret adapté à votre contexte.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -79,10 +79,10 @@ export default function AuditsPage() {
               <h2 className="text-sm font-semibold tracking-wide uppercase text-sky">Ce que vous obtenez</h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Un etat des lieux fiable et priorise",
-                  "Des risques metier clairement identifies",
+                  "Un état des lieux fiable et priorisé",
+                  "Des risques métier clairement identifiés",
                   "Un plan d'action pragmatique",
-                  "Une base solide pour la remediation",
+                  "Une base solide pour la remédiation",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-slate">
                     <span className="mt-1 h-2 w-2 rounded-full bg-sky shrink-0" />

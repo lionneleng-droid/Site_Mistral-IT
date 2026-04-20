@@ -139,7 +139,7 @@ const TABS = [
         icon: "🛠️",
         color: "bg-emerald-50",
         title: "Plan de remédiation accompagné",
-        desc: "Notre expert reste disponible pour guider l'implémentation des corrections identifiées, sans vous laisser seul face au rapport.",
+        desc: "Je reste disponible pour guider l'implémentation des corrections identifiées, sans vous laisser seul face au rapport.",
       },
       {
         icon: "📅",
@@ -180,11 +180,11 @@ export default function HeroSection() {
           <span>↗</span> Audit · Remédiation · Accompagnement IT
         </span>
         <h1 className="fade-up delay-2 font-playfair font-bold text-ink leading-[1.08] tracking-tight text-4xl sm:text-5xl xl:text-[4rem] mb-6">
-          Votre informatique,{" "}
-          <em className="text-sky not-italic">de A à Z.</em>
+          J'audite, je corrige et je structure{" "}
+          <em className="text-sky not-italic">votre informatique.</em>
         </h1>
         <p className="fade-up delay-3 text-slate font-light text-[1.05rem] leading-relaxed max-w-[480px] mb-9">
-          De l'audit de sécurité à la remédiation, jusqu'à la construction d'un système d'information complet — Mistral IT vous accompagne à chaque étape avec une approche claire et des résultats concrets.
+          De l'audit de sécurité à la remédiation, jusqu'à la construction d'un environnement IT complet, je vous accompagne à chaque étape avec une approche claire et des résultats concrets.
         </p>
         <div className="fade-up delay-4 flex flex-wrap gap-3 mb-12">
           <a

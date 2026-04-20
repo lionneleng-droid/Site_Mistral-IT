@@ -8,25 +8,25 @@ const pillars = [
     title: "Choix du matériel adapté",
     description:
       "Postes, laptops, réseau, backup et sécurité: vous obtenez des recommandations claires selon vos usages réels et vos contraintes budgétaires.",
-    points: ["Audit des usages", "élection de matériel fiable", "Plan de renouvellement"],
+    points: ["Audit des usages", "Sélection de matériel fiable", "Plan de renouvellement"],
   },
   {
     title: "Infrastructure et équipements",
     description:
-      "Nous concevons une base technique solide: réseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
+      "Je conçois une base technique solide: réseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
     points: ["Schéma d'architecture", "Choix des équipements", "Mise en service sécurisée"],
   },
   {
     title: "Mise en place serveur",
     description:
-      "Serveur local, cloud ou hybride: nous préparons l'environnement, les accès, la sauvegarde et la documentation d'exploitation.",
+      "Serveur local, cloud ou hybride: je prépare l'environnement, les accès, la sauvegarde et la documentation d'exploitation.",
     points: ["Installation et hardening", "Sauvegardes et reprise", "Documentation opérationnelle"],
   },
   {
     title: "Supervision et continuité IT",
     description:
-      "Nous mettons en place un socle d'exploitation fiable: supervision, alerting, sauvegardes et procédures de reprise pour garantir la disponibilité de votre environnement.",
-    points: ["Monitoring et alertes", "Politique de sauvegarde", "Plan de reprise d'activite"],
+      "Je mets en place un socle d'exploitation fiable: supervision, alerting, sauvegardes et procédures de reprise pour garantir la disponibilité de votre environnement.",
+    points: ["Monitoring et alertes", "Politique de sauvegarde", "Plan de reprise d'activité"],
   },
 ];
 
@@ -60,10 +60,10 @@ export default function AccompagnementSIPage() {
                   Demander un cadrage IT
                 </Link>
                 <Link
-                  href="/#services"
+                  href="/audits#remediation"
                   className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
                 >
-                  Voir les autres prestations
+                  Voir les offres d'audit et remédiation
                 </Link>
               </div>
             </div>
@@ -72,10 +72,10 @@ export default function AccompagnementSIPage() {
               <h2 className="text-sm font-semibold tracking-wide uppercase text-sky">Ce que vous obtenez</h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Un environnement IT aligne sur vos usages metier",
-                  "Des choix techniques justifies et durables",
-                  "Un budget priorise sans sur-investissement",
-                  "Une execution concrete avec pilotage",
+                  "Un environnement IT aligné sur vos usages métier",
+                  "Des choix techniques justifiés et durables",
+                  "Un budget priorisé sans sur-investissement",
+                  "Une exécution concrète avec pilotage",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-slate">
                     <span className="mt-1 h-2 w-2 rounded-full bg-sky shrink-0" />

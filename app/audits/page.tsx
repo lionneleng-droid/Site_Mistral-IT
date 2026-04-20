@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const audits = [
   {
-    title: "Pre-audit Express",
+    title: "Pré-audit Express",
     subtitle: "30 minutes pour faire le point",
     points: [
       "Score sécurité / maturité IT",
@@ -25,7 +25,7 @@ const audits = [
     ],
   },
   {
-    title: "Pack Audit Avance",
+    title: "Pack Audit Avancé",
     subtitle: "Analyse technique complète",
     points: [
       "Scan réseau complet (Nmap + vulnérabilités)",
@@ -55,7 +55,7 @@ export default function AuditsPage() {
                 Évaluer, prioriser et sécuriser votre environnement
               </h1>
               <p className="mt-5 max-w-2xl text-base lg:text-lg text-slate leading-relaxed">
-                Nous auditons votre infrastructure pour identifier les risques réels,
+                J'audite votre infrastructure pour identifier les risques réels,
                 définir les priorités et fournir un plan d'action concret adapté à votre contexte.
               </p>
 
@@ -70,7 +70,7 @@ export default function AuditsPage() {
                   href="#contact"
                   className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
                 >
-                  Demander un echange
+                  Demander un échange
                 </Link>
               </div>
             </div>
@@ -113,6 +113,35 @@ export default function AuditsPage() {
                 </ul>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section id="remediation" className="border-y border-[#e4e8ef] bg-[#f8fbff]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-16">
+            <div className="rounded-2xl border border-[#dbe5f2] bg-white p-8 lg:p-10">
+              <p className="text-xs font-semibold uppercase tracking-wide text-sky">Remédiation</p>
+              <h2 className="mt-2 text-2xl lg:text-3xl font-bold text-ink">
+                Je corrige les failles identifiées et je sécurise l'existant
+              </h2>
+              <p className="mt-4 text-sm lg:text-base text-slate leading-relaxed max-w-3xl">
+                Après l'audit, je prends en charge la remédiation priorisée: corrections techniques,
+                durcissement des configurations, validation des actions et recommandations opérationnelles.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/tarifs"
+                  className="inline-flex items-center rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky"
+                >
+                  Voir les packs et tarifs
+                </Link>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
+                >
+                  Me contacter
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

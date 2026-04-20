@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
+  { href: "/", label: "Accueil" },
   { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
   { href: "/a-propos", label: "À propos" },
 ];

@@ -177,23 +177,21 @@ export default function HeroSection() {
       {/* ── Left: copy ── */}
       <div className="relative z-10" style={{ zIndex: 2 }}>
         <span className="fade-up delay-1 inline-flex items-center gap-1.5 text-xs font-semibold text-sky tracking-widest uppercase bg-skylt px-3.5 py-1.5 rounded-full mb-6">
-          <span>↗</span> Sécurité · Infrastructure · Évolution
+          <span>↗</span> Audit · Remédiation · Accompagnement SI
         </span>
         <h1 className="fade-up delay-2 font-playfair font-bold text-ink leading-[1.08] tracking-tight text-4xl sm:text-5xl xl:text-[4rem] mb-6">
-          Votre sécurité,{" "}
-          <em className="text-sky not-italic">notre priorité.</em>
+          Votre informatique,{" "}
+          <em className="text-sky not-italic">de A à Z.</em>
         </h1>
         <p className="fade-up delay-3 text-slate font-light text-[1.05rem] leading-relaxed max-w-[480px] mb-9">
-          Mistral IT accompagne les entreprises dans l'audit de leurs systèmes
-          et la mise en œuvre de solutions IT robustes. Une approche claire, des
-          résultats concrets.
+          De l'audit de sécurité à la remédiation, jusqu'à la construction d'un système d'information complet — Mistral IT vous accompagne à chaque étape avec une approche claire et des résultats concrets.
         </p>
         <div className="fade-up delay-4 flex flex-wrap gap-3 mb-12">
           <a
-            href="#audits"
+            href="#offres"
             className="text-sm font-semibold px-7 py-3 bg-ink text-white rounded-lg border-2 border-ink hover:bg-sky hover:border-sky transition-colors"
           >
-            Découvrir nos audits
+            Découvrir nos offres
           </a>
           <a
             href="#contact"

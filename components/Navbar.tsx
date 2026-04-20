@@ -81,6 +81,14 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href="/glpi"
+              className={`text-sm font-medium ${textColor} hover:text-sky transition-colors`}
+            >
+              GLPI Workflow
+            </Link>
+          </li>
         </ul>
 
         {/* CTA */}
@@ -116,6 +124,13 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <Link
+            href="/glpi"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm font-medium ${isOverDark ? "text-white" : "text-slate"}`}
+          >
+            GLPI Workflow
+          </Link>
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}

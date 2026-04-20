@@ -1,8 +1,6 @@
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import OffresSection from "../components/OffresSection";
-import ProcessSection from "../components/ProcessSection";
-import WhySection from "../components/WhySection";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 import ScrollReveal from "../components/ScrollReveal";
@@ -19,8 +17,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <OffresSection />
-        <ProcessSection />
-        <WhySection />
         <ContactSection />
         <AboutSection />
       </main>

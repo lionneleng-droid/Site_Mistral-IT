@@ -23,10 +23,10 @@ const pillars = [
     points: ["Installation et hardening", "Sauvegardes et reprise", "Documentation opérationnelle"],
   },
   {
-    title: "ERP via partenariat",
+    title: "Supervision et continuité IT",
     description:
-      "Quand un ERP est nécessaire, nous cadrons le besoin et pilotons l'intégration avec des partenaires métier pour une mise en place pragmatique.",
-    points: ["Cadrage du besoin", "élection du partenaire", "Pilotage du déploiement"],
+      "Nous mettons en place un socle d'exploitation fiable: supervision, alerting, sauvegardes et procédures de reprise pour garantir la disponibilité de votre environnement.",
+    points: ["Monitoring et alertes", "Politique de sauvegarde", "Plan de reprise d'activite"],
   },
 ];
 
@@ -42,11 +42,11 @@ export default function AccompagnementSIPage() {
           <div className="relative max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-20 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
             <div>
               <h1 className="mt-5 text-3xl lg:text-5xl font-bold leading-tight text-ink">
-                Architecture SI & Déploiement Metier
+                Architecture IT et construction de système d'information
               </h1>
               <p className="mt-5 max-w-2xl text-base lg:text-lg text-slate leading-relaxed">
                 Un accompagnement complet pour construire un système d'information robuste, évolutif et cohérent avec votre activité.
-                Du choix des équipements jusqu'à la mise en place serveur et l'intégration d'un ERP, tout est cadré et piloté.
+                Du choix des équipements jusqu'à la mise en place serveur, tout est cadré et piloté.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -54,7 +54,7 @@ export default function AccompagnementSIPage() {
                   href="#contact"
                   className="inline-flex items-center rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky"
                 >
-                  Demander un cadrage SI
+                  Demander un cadrage IT
                 </Link>
                 <Link
                   href="/#services"
@@ -69,7 +69,7 @@ export default function AccompagnementSIPage() {
               <h2 className="text-sm font-semibold tracking-wide uppercase text-sky">Ce que vous obtenez</h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Un SI aligne sur vos usages metier",
+                  "Un environnement IT aligne sur vos usages metier",
                   "Des choix techniques justifies et durables",
                   "Un budget priorise sans sur-investissement",
                   "Une execution concrete avec pilotage",
@@ -109,7 +109,7 @@ export default function AccompagnementSIPage() {
         <section className="max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-16">
           <div className="rounded-2xl border border-ink bg-ink px-6 py-8 lg:px-10 lg:py-10 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
             <div>
-              <p className="text-xs uppercase tracking-wide text-sky">Prêt à structurer votre SI ?</p>
+              <p className="text-xs uppercase tracking-wide text-sky">Prêt à structurer votre IT ?</p>
               <h2 className="mt-2 text-2xl lg:text-3xl font-bold">On transforme les besoins métier en système concret.</h2>
               <p className="mt-3 text-sm lg:text-base text-[#c2d2ea] max-w-2xl">
                 Vous gardez une vision claire des priorités, du budget et des choix techniques à chaque étape.
@@ -119,7 +119,7 @@ export default function AccompagnementSIPage() {
               href="#contact"
               className="inline-flex justify-center items-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
             >
-              Lancer mon projet SI
+              Lancer mon projet IT
             </Link>
           </div>
         </section>

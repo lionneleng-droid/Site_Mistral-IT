@@ -39,7 +39,7 @@ const OFFRES = [
     icon: "🏗️",
     color: "bg-sky-50",
     accent: "#0ea5e9",
-    label: "Accompagnement SI",
+    label: "Accompagnement IT",
     title: "Construction du Système d'Information",
     description:
       "Vous démarrez ou restructurez votre informatique ? Nous construisons votre SI de A à Z : choix du matériel, serveur, réseau, et ERP selon vos besoins métier.",
@@ -50,7 +50,7 @@ const OFFRES = [
       "Intégration ERP via partenariat",
     ],
     href: "/accompagnement-si",
-    cta: "Voir l'accompagnement SI",
+    cta: "Voir l'accompagnement IT",
   },
 ];
 

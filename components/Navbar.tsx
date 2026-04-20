@@ -92,7 +92,7 @@ export default function Navbar() {
             href="/accompagnement-si"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
           >
-            Accompagnement SI
+            Accompagnement IT
           </Link>
           <Link
             href="/tarifs"
@@ -135,7 +135,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
             className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
           >
-            Accompagnement SI
+            Accompagnement IT
           </Link>
           <Link
             href="/tarifs"

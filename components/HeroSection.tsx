@@ -177,7 +177,7 @@ export default function HeroSection() {
       {/* ── Left: copy ── */}
       <div className="relative z-10" style={{ zIndex: 2 }}>
         <span className="fade-up delay-1 inline-flex items-center gap-1.5 text-xs font-semibold text-sky tracking-widest uppercase bg-skylt px-3.5 py-1.5 rounded-full mb-6">
-          <span>↗</span> Audit · Remédiation · Accompagnement SI
+          <span>↗</span> Audit · Remédiation · Accompagnement IT
         </span>
         <h1 className="fade-up delay-2 font-playfair font-bold text-ink leading-[1.08] tracking-tight text-4xl sm:text-5xl xl:text-[4rem] mb-6">
           Votre informatique,{" "}

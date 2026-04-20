@@ -23,8 +23,8 @@ const OFFERS = [
     deliverables: [
       "Scan réseau rapide",
       "Vérification sécurité basique (ports, firewall, MFA)",
-      "Analyse AD simplifiée (si existant)",
-      "Check sauvegardes",
+      "Analyse Active Directory simplifiée (si existant)",
+      "Check sauvegardes et rétentions",
       "Rapport PDF clair (non technique)",
     ],
   },
@@ -38,7 +38,7 @@ const OFFERS = [
       "Audit Active Directory (droits, GPO, comptes à risque)",
       "Analyse VLAN / segmentation",
       "Test exposition externe (IP publique, services ouverts)",
-      "Analyse des postes (échantillon)",
+      "Analyse des postes de travail (patchs, antivirus, configurations)",
       "Vérification PRA / sauvegardes",
       "Rapport détaillé + plan d'action",
     ],
@@ -120,7 +120,7 @@ export default function TarifsPage() {
                   href="/accompagnement-si"
                   className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
                 >
-                  Voir l'accompagnement SI
+                  Voir l'accompagnement IT
                 </Link>
               </div>
             </div>

@@ -83,12 +83,6 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
           <Link
-            href="/tarifs"
-            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
-          >
-            Tarifs
-          </Link>
-          <Link
             href="/audits"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
           >
@@ -100,6 +94,12 @@ export default function Navbar() {
           >
             Accompagnement SI
           </Link>
+          <Link
+            href="/tarifs"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+          >
+            Tarifs
+          </Link>          
           <a
             href="#contact"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
@@ -124,13 +124,6 @@ export default function Navbar() {
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
           <Link
-            href="/tarifs"
-            onClick={() => setMenuOpen(false)}
-            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
-          >
-            Tarifs
-          </Link>
-          <Link
             href="/audits"
             onClick={() => setMenuOpen(false)}
             className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
@@ -144,6 +137,13 @@ export default function Navbar() {
           >
             Accompagnement SI
           </Link>
+          <Link
+            href="/tarifs"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+          >
+            Tarifs
+          </Link>          
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}

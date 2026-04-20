@@ -38,6 +38,9 @@ export default function Navbar() {
   const ctaClasses = isOverDark
     ? "bg-white text-ink hover:bg-gray-100"
     : "bg-ink text-white hover:bg-sky";
+  const serviceCtaClasses = isOverDark
+    ? "text-white border-white/40 hover:bg-white/10"
+    : "text-ink border-ink/25 hover:bg-skylt";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -84,12 +87,20 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
-        >
-          Demander un devis
-        </a>
+        <div className="hidden md:flex items-center gap-2">
+          <Link
+            href="/accompagnement-si"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+          >
+            Accompagnement SI
+          </Link>
+          <a
+            href="#contact"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
+          >
+            Demander un devis
+          </a>
+        </div>
 
         {/* Mobile burger */}
         <button
@@ -106,6 +117,13 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
+          <Link
+            href="/accompagnement-si"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+          >
+            Accompagnement SI
+          </Link>
           {NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}

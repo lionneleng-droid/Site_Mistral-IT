@@ -30,13 +30,6 @@ const pillars = [
   },
 ];
 
-const steps = [
-  "Diagnostic de l'existant et des objectifs",
-  "Roadmap claire priorisée en lots",
-  "Mise en œuvre technique progressive",
-  "Suivi, transfert de compétences et optimisation",
-];
-
 export default function AccompagnementSIPage() {
   return (
     <>
@@ -110,20 +103,6 @@ export default function AccompagnementSIPage() {
                 </ul>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className="border-y border-[#e4e8ef] bg-[#f8fbff]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-16">
-            <h2 className="text-2xl lg:text-3xl font-bold text-ink">Méthode d'accompagnement</h2>
-            <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {steps.map((step, index) => (
-                <div key={step} className="rounded-xl bg-white border border-[#dbe5f2] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-sky">Étape {index + 1}</p>
-                  <p className="mt-2 text-sm text-slate leading-relaxed">{step}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

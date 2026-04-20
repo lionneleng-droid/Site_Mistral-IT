@@ -4,9 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { href: "/audits", label: "Audits" },
-  { href: "/prestations", label: "Prestations" },
-  { href: "/methode", label: "Ma Méthode" },
   { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
   { href: "/a-propos", label: "À propos" },
 ];
@@ -85,6 +82,12 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
           <Link
+            href="/audits"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+          >
+            Audits
+          </Link>
+          <Link
             href="/accompagnement-si"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
           >
@@ -113,6 +116,13 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
+          <Link
+            href="/audits"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+          >
+            Audits
+          </Link>
           <Link
             href="/accompagnement-si"
             onClick={() => setMenuOpen(false)}

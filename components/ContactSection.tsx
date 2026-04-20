@@ -34,14 +34,14 @@ export default function ContactSection() {
         {/* Left: info */}
         <div>
           <p className="text-xs font-semibold text-sky tracking-widest uppercase mb-3">
-            Nous contacter
+            Me contacter
           </p>
           <h2 className="font-playfair font-bold text-ink text-3xl sm:text-[2.6rem] leading-tight tracking-tight mb-5">
             Démarrons votre audit
           </h2>
           <p className="text-slate font-light text-[0.95rem] leading-relaxed mb-10">
-            Un consultant Mistral IT vous recontacte sous 24h pour qualifier
-            votre besoin et vous proposer une approche sur-mesure.
+            Je vous recontacte sous 24h pour qualifier votre besoin
+            et vous proposer une approche sur-mesure.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -73,7 +73,7 @@ export default function ContactSection() {
                 Message envoyé !
               </h3>
               <p className="text-slate font-light text-sm max-w-xs">
-                Un consultant Mistral IT vous contactera dans les 24h ouvrées.
+                Je vous contacterai dans les 24h ouvrées.
               </p>
               <button
                 onClick={() => setSubmitted(false)}

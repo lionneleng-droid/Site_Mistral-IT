@@ -106,7 +106,7 @@ export default function TarifsPage() {
               </h2>
               <p className="mt-4 text-sm lg:text-base text-slate leading-relaxed max-w-3xl">
                 Si votre besoin dépasse un pack standard, l'accompagnement est uniquement sur mesure.
-                Nous définissons ensemble l'architecture cible (matériel, équipements, serveur, réseau,
+                Je définis avec vous l'architecture cible (matériel, équipements, serveur, réseau,
                 sécurité et poste de travail) lors d'un échange gratuit sur rendez-vous ou par téléphone.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">

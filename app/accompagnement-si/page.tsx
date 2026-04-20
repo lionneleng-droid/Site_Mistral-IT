@@ -8,24 +8,24 @@ const pillars = [
     title: "Choix du matériel adapté",
     description:
       "Postes, laptops, réseau, backup et sécurité: vous obtenez des recommandations claires selon vos usages réels et vos contraintes budgétaires.",
-    points: ["Audit des usages", "élection de matériel fiable", "Plan de renouvellement"],
+    points: ["Audit des usages", "Selection de matériel fiable", "Plan de renouvellement"],
   },
   {
     title: "Infrastructure et équipements",
     description:
-      "Nous concevons une base technique solide: réseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
+      "Je conçois une base technique solide: réseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
     points: ["Schéma d'architecture", "Choix des équipements", "Mise en service sécurisée"],
   },
   {
     title: "Mise en place serveur",
     description:
-      "Serveur local, cloud ou hybride: nous préparons l'environnement, les accès, la sauvegarde et la documentation d'exploitation.",
+      "Serveur local, cloud ou hybride: je prépare l'environnement, les accès, la sauvegarde et la documentation d'exploitation.",
     points: ["Installation et hardening", "Sauvegardes et reprise", "Documentation opérationnelle"],
   },
   {
     title: "Supervision et continuité IT",
     description:
-      "Nous mettons en place un socle d'exploitation fiable: supervision, alerting, sauvegardes et procédures de reprise pour garantir la disponibilité de votre environnement.",
+      "Je mets en place un socle d'exploitation fiable: supervision, alerting, sauvegardes et procédures de reprise pour garantir la disponibilité de votre environnement.",
     points: ["Monitoring et alertes", "Politique de sauvegarde", "Plan de reprise d'activite"],
   },
 ];
@@ -60,10 +60,10 @@ export default function AccompagnementSIPage() {
                   Demander un cadrage IT
                 </Link>
                 <Link
-                  href="/#services"
+                  href="/audits#remediation"
                   className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
                 >
-                  Voir les autres prestations
+                  Voir les offres d'audit et remédiation
                 </Link>
               </div>
             </div>

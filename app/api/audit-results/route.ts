@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
             </div>
             <div class="content">
               <p>Bonjour <strong>${prenom} ${nom}</strong>,</p>
-              <p>Nous avons bien reçu vos réponses au diagnostic d'audit. Voici vos résultats :</p>
+              <p>J'ai bien reçu vos réponses au diagnostic d'audit. Voici vos résultats :</p>
               <p><strong>Entreprise :</strong> ${societe}</p>
               <p><strong>Date :</strong> ${date}</p>
               <div class="result-box">
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
                 <div class="score-item"><span>Réseaux</span><strong>${scores.reseaux}/3</strong></div>
                 <div class="score-item" style="border-bottom: none;"><span>Autres besoins</span><strong>${scores.autres}/3</strong></div>
               </div>
-              <p>Basé sur vos réponses, nous avons identifié que votre entreprise bénéficierait d'un audit approfondi sur cet aspect spécifique de votre infrastructure informatique.</p>
+              <p>Basé sur vos réponses, j'ai identifié que votre entreprise bénéficierait d'un audit approfondi sur cet aspect spécifique de votre infrastructure informatique.</p>
               <p><strong>Notre équipe d'experts est prête à vous accompagner pour :</strong></p>
               <ul>
                 <li>Évaluer votre situation actuelle</li>

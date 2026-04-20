@@ -25,15 +25,15 @@ const OFFRES = [
     label: "Remédiation & Prestations",
     title: "Remédiation & Mise en production",
     description:
-      "Une fois les failles identifiées, nous les corrigeons. Déploiement de solutions, sécurisation de l'architecture réseau, renforcement de l'infrastructure et automatisation des processus.",
+      "Une fois les failles identifiées, je les corrige. Je déploie les solutions, je sécurise l'architecture réseau et je renforce l'infrastructure pour une mise en production fiable.",
     points: [
       "Correction des vulnérabilités identifiées",
       "Sécurisation Active Directory & réseau",
       "Automatisation Ansible / scripts",
       "Mise en production et suivi",
     ],
-    href: "/audits",
-    cta: "Voir les prestations",
+    href: "/audits#remediation",
+    cta: "Voir la remédiation",
   },
   {
     icon: "🏗️",
@@ -42,7 +42,7 @@ const OFFRES = [
     label: "Accompagnement IT",
     title: "Construction du Système d'Information",
     description:
-      "Vous démarrez ou restructurez votre informatique ? Nous construisons votre SI de A à Z : choix du matériel, serveur, réseau, et ERP selon vos besoins métier.",
+      "Vous démarrez ou restructurez votre informatique ? Je construis votre environnement IT de A à Z : choix du matériel, serveur, réseau et organisation technique selon vos besoins métier.",
     points: [
       "Choix du matériel et des équipements",
       "Mise en place serveur (local, cloud, hybride)",
@@ -67,7 +67,7 @@ export default function OffresSection() {
       </h2>
       <p className="text-slate font-light text-[1rem] leading-relaxed max-w-xl mb-14">
         Que vous ayez besoin de sécuriser l'existant, corriger des failles ou construire un système d'information
-        depuis zéro, Mistral IT intervient avec une méthode structurée et des livrables concrets.
+        depuis zéro, j'interviens avec une méthode structurée et des livrables concrets.
       </p>
 
       <div className="flex flex-wrap gap-4 mb-10">

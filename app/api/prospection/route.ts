@@ -139,7 +139,7 @@ function buildEmailContent(
     html: base(`
       <p style="margin:0 0 16px;">Bonjour ${prenom},</p>
       <p style="margin:0 0 16px;">Je souhaitais vous proposer un rendez-vous afin d'échanger sur la sécurité informatique de <strong>${societe}</strong> et voir comment <strong>Mistral IT</strong> pourrait vous accompagner.</p>
-      <p style="margin:0 0 16px;">Cet échange de <strong>30 à 45 minutes</strong> nous permettrait de :</p>
+      <p style="margin:0 0 16px;">Cet échange de <strong>30 à 45 minutes</strong> me permettrait de :</p>
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 16px;">
         <tr><td style="padding:4px 0 4px 16px;font-family:Arial,sans-serif;font-size:15px;color:#3a4a63;line-height:1.6;">— Faire le point sur votre infrastructure et votre niveau d'exposition actuel</td></tr>
         <tr><td style="padding:4px 0 4px 16px;font-family:Arial,sans-serif;font-size:15px;color:#3a4a63;line-height:1.6;">— Identifier les axes d'amélioration prioritaires</td></tr>

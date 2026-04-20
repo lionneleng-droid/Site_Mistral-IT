@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { href: "#audits", label: "Audits" },
-  { href: "#services", label: "Prestations" },
-  { href: "#processus", label: "Ma Méthode" },
-  { href: "#pourquoi", label: "Pourquoi moi ?" },
-  { href: "#about", label: "À propos" },
+  { href: "/audits", label: "Audits" },
+  { href: "/prestations", label: "Prestations" },
+  { href: "/methode", label: "Ma Méthode" },
+  { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
+  { href: "/a-propos", label: "À propos" },
 ];
 
 export default function Navbar() {
@@ -42,10 +42,6 @@ export default function Navbar() {
     ? "text-white border-white/40 hover:bg-white/10"
     : "text-ink border-ink/25 hover:bg-skylt";
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -58,7 +54,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20 flex items-center justify-between h-16">
         {/* Logo */}
-        <div onClick={scrollToTop} className="flex items-center gap-2 cursor-pointer">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <Image
             src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
@@ -70,18 +66,18 @@ export default function Navbar() {
             Mistral IT
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-sky mb-0.5 flex-shrink-0" />
-        </div>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a
+              <Link
                 href={href}
                 className={`text-sm font-medium ${textColor} hover:text-sky transition-colors`}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -125,14 +121,14 @@ export default function Navbar() {
             Accompagnement SI
           </Link>
           {NAV_LINKS.map(({ href, label }) => (
-            <a
+            <Link
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
               className={`text-sm font-medium ${isOverDark ? "text-white" : "text-slate"}`}
             >
               {label}
-            </a>
+            </Link>
           ))}
           <a
             href="#contact"

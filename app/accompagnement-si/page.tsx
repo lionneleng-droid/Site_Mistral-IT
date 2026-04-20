@@ -1,39 +1,40 @@
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import ContactSection from "../../components/ContactSection";
 
 const pillars = [
   {
-    title: "Choix du materiel adapte",
+    title: "Choix du matériel adapté",
     description:
-      "Postes, laptops, reseau, backup et securite: vous obtenez des recommandations claires selon vos usages reels et vos contraintes budgetaires.",
-    points: ["Audit des usages", "Selection de materiel fiable", "Plan de renouvellement"],
+      "Postes, laptops, réseau, backup et sécurité: vous obtenez des recommandations claires selon vos usages réels et vos contraintes budgétaires.",
+    points: ["Audit des usages", "élection de matériel fiable", "Plan de renouvellement"],
   },
   {
-    title: "Infrastructure et equipements",
+    title: "Infrastructure et équipements",
     description:
-      "Nous concevons une base technique solide: reseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
-    points: ["Schema d'architecture", "Choix des equipements", "Mise en service securisee"],
+      "Nous concevons une base technique solide: réseau, segmentation, Wi-Fi, supervision et bonnes pratiques pour une croissance sans dette technique.",
+    points: ["Schéma d'architecture", "Choix des équipements", "Mise en service sécurisée"],
   },
   {
     title: "Mise en place serveur",
     description:
-      "Serveur local, cloud ou hybride: nous preparons l'environnement, les acces, la sauvegarde et la documentation d'exploitation.",
-    points: ["Installation et hardening", "Sauvegardes et reprise", "Documentation operationnelle"],
+      "Serveur local, cloud ou hybride: nous préparons l'environnement, les accès, la sauvegarde et la documentation d'exploitation.",
+    points: ["Installation et hardening", "Sauvegardes et reprise", "Documentation opérationnelle"],
   },
   {
     title: "ERP via partenariat",
     description:
-      "Quand un ERP est necessaire, nous cadrons le besoin et pilotons l'integration avec des partenaires metier pour une mise en place pragmatique.",
-    points: ["Cadrage du besoin", "Selection du partenaire", "Pilotage du deploiement"],
+      "Quand un ERP est nécessaire, nous cadrons le besoin et pilotons l'intégration avec des partenaires métier pour une mise en place pragmatique.",
+    points: ["Cadrage du besoin", "élection du partenaire", "Pilotage du déploiement"],
   },
 ];
 
 const steps = [
   "Diagnostic de l'existant et des objectifs",
-  "Roadmap claire priorisee en lots",
-  "Mise en oeuvre technique progressive",
-  "Suivi, transfert de competences et optimisation",
+  "Roadmap claire priorisée en lots",
+  "Mise en œuvre technique progressive",
+  "Suivi, transfert de compétences et optimisation",
 ];
 
 export default function AccompagnementSIPage() {
@@ -47,20 +48,17 @@ export default function AccompagnementSIPage() {
 
           <div className="relative max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-20 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
             <div>
-              <p className="inline-flex items-center rounded-full border border-sky/30 bg-skylt px-3 py-1 text-xs font-semibold tracking-wide text-sky uppercase">
-                Nouveau service
-              </p>
               <h1 className="mt-5 text-3xl lg:text-5xl font-bold leading-tight text-ink">
-                Architecture SI & Deploiement Metier
+                Architecture SI & Déploiement Metier
               </h1>
               <p className="mt-5 max-w-2xl text-base lg:text-lg text-slate leading-relaxed">
-                Un accompagnement complet pour construire un systeme d'information robuste, evolutif et coherent avec votre activite.
-                Du choix des equipements jusqu'a la mise en place serveur et l'integration d'un ERP, tout est cadre et pilote.
+                Un accompagnement complet pour construire un système d'information robuste, évolutif et cohérent avec votre activité.
+                Du choix des équipements jusqu'à la mise en place serveur et l'intégration d'un ERP, tout est cadré et piloté.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/#contact"
+                  href="#contact"
                   className="inline-flex items-center rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky"
                 >
                   Demander un cadrage SI
@@ -117,11 +115,11 @@ export default function AccompagnementSIPage() {
 
         <section className="border-y border-[#e4e8ef] bg-[#f8fbff]">
           <div className="max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-16">
-            <h2 className="text-2xl lg:text-3xl font-bold text-ink">Methode d'accompagnement</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-ink">Méthode d'accompagnement</h2>
             <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {steps.map((step, index) => (
                 <div key={step} className="rounded-xl bg-white border border-[#dbe5f2] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-sky">Etape {index + 1}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-sky">Étape {index + 1}</p>
                   <p className="mt-2 text-sm text-slate leading-relaxed">{step}</p>
                 </div>
               ))}
@@ -132,20 +130,22 @@ export default function AccompagnementSIPage() {
         <section className="max-w-7xl mx-auto px-6 lg:px-20 py-14 lg:py-16">
           <div className="rounded-2xl border border-ink bg-ink px-6 py-8 lg:px-10 lg:py-10 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
             <div>
-              <p className="text-xs uppercase tracking-wide text-sky">Pret a structurer votre SI ?</p>
-              <h2 className="mt-2 text-2xl lg:text-3xl font-bold">On transforme les besoins metier en systeme concret.</h2>
+              <p className="text-xs uppercase tracking-wide text-sky">Prêt à structurer votre SI ?</p>
+              <h2 className="mt-2 text-2xl lg:text-3xl font-bold">On transforme les besoins métier en système concret.</h2>
               <p className="mt-3 text-sm lg:text-base text-[#c2d2ea] max-w-2xl">
-                Vous gardez une vision claire des priorites, du budget et des choix techniques a chaque etape.
+                Vous gardez une vision claire des priorités, du budget et des choix techniques à chaque étape.
               </p>
             </div>
             <Link
-              href="/#contact"
+              href="#contact"
               className="inline-flex justify-center items-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
             >
               Lancer mon projet SI
             </Link>
           </div>
         </section>
+
+        <ContactSection />
       </main>
 
       <Footer />

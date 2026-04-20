@@ -85,6 +85,12 @@ export default function Navbar() {
             Accueil
           </a>
           <Link
+            href="/tarifs"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+          >
+            Tarifs
+          </Link>
+          <Link
             href="/audits"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
           >
@@ -122,6 +128,13 @@ export default function Navbar() {
           <a href="/" onClick={() => setMenuOpen(false)} className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}>
             Accueil
           </a>
+          <Link
+            href="/tarifs"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+          >
+            Tarifs
+          </Link>
           <Link
             href="/audits"
             onClick={() => setMenuOpen(false)}

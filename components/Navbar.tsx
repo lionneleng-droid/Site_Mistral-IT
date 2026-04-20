@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
+  { href: "/", label: "Accueil" },
   { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
   { href: "/a-propos", label: "À propos" },
 ];
@@ -81,9 +82,6 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
-          <a href="/" className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}>
-            Accueil
-          </a>
           <Link
             href="/tarifs"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
@@ -125,9 +123,6 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
-          <a href="/" onClick={() => setMenuOpen(false)} className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}>
-            Accueil
-          </a>
           <Link
             href="/tarifs"
             onClick={() => setMenuOpen(false)}

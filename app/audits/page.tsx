@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const audits = [
   {
-    title: "Pre-audit Express",
+    title: "Pré-audit Express",
     subtitle: "30 minutes pour faire le point",
     points: [
       "Score sécurité / maturité IT",
@@ -25,7 +25,7 @@ const audits = [
     ],
   },
   {
-    title: "Pack Audit Avance",
+    title: "Pack Audit Avancé",
     subtitle: "Analyse technique complète",
     points: [
       "Scan réseau complet (Nmap + vulnérabilités)",
@@ -70,7 +70,7 @@ export default function AuditsPage() {
                   href="#contact"
                   className="inline-flex items-center rounded-lg border border-[#cdd7e6] bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-skylt"
                 >
-                  Demander un echange
+                  Demander un échange
                 </Link>
               </div>
             </div>

@@ -58,7 +58,7 @@ export default function TarifsPage() {
               Nos tarifs
             </p>
             <h1 className="mt-5 text-3xl lg:text-5xl font-bold leading-tight text-ink">
-              Des offres claires pour securiser votre informatique
+              Des offres claires pour sécuriser votre informatique
             </h1>
             <p className="mt-5 max-w-3xl text-base lg:text-lg text-slate leading-relaxed">
               Choisissez le niveau d'accompagnement adapté à votre contexte: pré-audit express, audit essentiel,
@@ -93,7 +93,7 @@ export default function TarifsPage() {
           </div>
 
           <p className="mt-6 text-sm text-slate">
-            * Le pré-audit à 99EUR TTC est offert si vous souscrivez ensuite à une offre plus chère.
+            * Le pré-audit à 99 € TTC est offert si vous souscrivez ensuite à une offre plus chère.
           </p>
         </section>
 

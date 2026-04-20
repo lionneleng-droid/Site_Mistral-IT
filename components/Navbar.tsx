@@ -9,6 +9,12 @@ const NAV_LINKS = [
   { href: "/a-propos", label: "À propos" },
 ];
 
+const SERVICE_LINKS = [
+  { href: "/audits", label: "Audits" },
+  { href: "/accompagnement-si", label: "Accompagnement IT" },
+  { href: "/tarifs", label: "Tarifs" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -82,24 +88,15 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
-          <Link
-            href="/audits"
-            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
-          >
-            Audits
-          </Link>
-          <Link
-            href="/accompagnement-si"
-            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
-          >
-            Accompagnement IT
-          </Link>
-          <Link
-            href="/tarifs"
-            className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
-          >
-            Tarifs
-          </Link>          
+          {SERVICE_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+            >
+              {label}
+            </Link>
+          ))}
           <a
             href="#contact"
             className={`inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
@@ -123,27 +120,16 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
-          <Link
-            href="/audits"
-            onClick={() => setMenuOpen(false)}
-            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
-          >
-            Audits
-          </Link>
-          <Link
-            href="/accompagnement-si"
-            onClick={() => setMenuOpen(false)}
-            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
-          >
-            Accompagnement IT
-          </Link>
-          <Link
-            href="/tarifs"
-            onClick={() => setMenuOpen(false)}
-            className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
-          >
-            Tarifs
-          </Link>          
+          {SERVICE_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+            >
+              {label}
+            </Link>
+          ))}
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}

@@ -4,11 +4,15 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { href: "#audits", label: "Audits" },
-  { href: "#services", label: "Prestations" },
-  { href: "#processus", label: "Ma Méthode" },
-  { href: "#pourquoi", label: "Pourquoi moi ?" },
-  { href: "#about", label: "À propos" },
+  { href: "/", label: "Accueil" },
+  { href: "/pourquoi-moi", label: "Pourquoi moi ?" },
+  { href: "/a-propos", label: "À propos" },
+];
+
+const SERVICE_LINKS = [
+  { href: "/audits", label: "Audits" },
+  { href: "/accompagnement-si", label: "Accompagnement IT" },
+  { href: "/tarifs", label: "Tarifs" },
 ];
 
 export default function Navbar() {
@@ -38,10 +42,9 @@ export default function Navbar() {
   const ctaClasses = isOverDark
     ? "bg-white text-ink hover:bg-gray-100"
     : "bg-ink text-white hover:bg-sky";
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const serviceCtaClasses = isOverDark
+    ? "text-white border-white/40 hover:bg-white/10"
+    : "text-ink border-ink/25 hover:bg-skylt";
 
   return (
     <nav
@@ -55,7 +58,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20 flex items-center justify-between h-16">
         {/* Logo */}
-        <div onClick={scrollToTop} className="flex items-center gap-2 cursor-pointer">
+        <a href="/" className="flex items-center gap-2 cursor-pointer">
           <Image
             src="/images/Logo.png" // Assurez-vous que le fichier logo.png est dans public/images/
             alt="Mistral IT"
@@ -67,29 +70,40 @@ export default function Navbar() {
             Mistral IT
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-sky mb-0.5 flex-shrink-0" />
-        </div>
+        </a>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a
+              <Link
                 href={href}
                 className={`text-sm font-medium ${textColor} hover:text-sky transition-colors`}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
-        >
-          Demander un devis
-        </a>
+        <div className="hidden md:flex items-center gap-2">
+          {SERVICE_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg border transition-colors ${serviceCtaClasses}`}
+            >
+              {label}
+            </Link>
+          ))}
+          <a
+            href="#contact"
+            className={`inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors ${ctaClasses}`}
+          >
+            Demander un devis
+          </a>
+        </div>
 
         {/* Mobile burger */}
         <button
@@ -106,15 +120,25 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={`md:hidden ${isOverDark ? "bg-ink border-gray-700" : "bg-white"} border-t border-[#e4e8ef] px-6 py-4 flex flex-col gap-4`}>
+          {SERVICE_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm font-semibold px-4 py-2.5 rounded-lg text-center border ${isOverDark ? "text-white border-white/40" : "text-ink border-ink/25"}`}
+            >
+              {label}
+            </Link>
+          ))}
           {NAV_LINKS.map(({ href, label }) => (
-            <a
+            <Link
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
               className={`text-sm font-medium ${isOverDark ? "text-white" : "text-slate"}`}
             >
               {label}
-            </a>
+            </Link>
           ))}
           <a
             href="#contact"
